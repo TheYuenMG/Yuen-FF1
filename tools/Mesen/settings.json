@@ -9,8 +9,8 @@
     "UseBilinearInterpolation": false,
     "UseSoftwareRenderer": false,
     "UseSrgbTextureFormat": false,
-    "VerticalSync": false,
-    "IntegerFpsMode": false,
+    "VerticalSync": true,
+    "IntegerFpsMode": true,
     "Brightness": 0,
     "Contrast": 0,
     "Hue": 0,
@@ -39,7 +39,7 @@
     "ScreenRotation": "None"
   },
   "Audio": {
-    "AudioDevice": "",
+    "AudioDevice": "Primary Sound Driver",
     "EnableAudio": true,
     "DisableDynamicSampleRate": false,
     "MasterVolume": 100,
@@ -47,7 +47,7 @@
     "AudioLatency": 60,
     "MuteSoundInBackground": false,
     "ReduceSoundInBackground": true,
-    "ReduceSoundInFastForward": false,
+    "ReduceSoundInFastForward": true,
     "VolumeReduction": 75,
     "ReverbEnabled": false,
     "ReverbStrength": 5,
@@ -85,8 +85,8 @@
     "MouseSensitivity": 5,
     "HidePointerForLightGuns": false,
     "ForceFeedbackIntensity": 5,
-    "DisplayInputPosition": "BottomRight",
-    "DisplayInputPort1": false,
+    "DisplayInputPosition": "BottomLeft",
+    "DisplayInputPort1": true,
     "DisplayInputPort2": false,
     "DisplayInputPort3": false,
     "DisplayInputPort4": false,
@@ -1373,8 +1373,8 @@
         "OekakidsButtons": null,
         "BandaiHypershotButtons": null,
         "NttDataKeypadButtons": null,
-        "A": 54,
-        "B": 53,
+        "A": 18,
+        "B": 60,
         "X": 0,
         "Y": 0,
         "L": 0,
@@ -1383,12 +1383,12 @@
         "Down": 62,
         "Left": 44,
         "Right": 47,
-        "Start": 52,
-        "Select": 64,
+        "Start": 6,
+        "Select": 3,
         "U": 0,
         "D": 0,
-        "TurboA": 140,
-        "TurboB": 56,
+        "TurboA": 48,
+        "TurboB": 116,
         "TurboX": 0,
         "TurboY": 0,
         "TurboL": 0,
@@ -3344,8 +3344,8 @@
     "DisableBackground": false,
     "ForceBackgroundFirstColumn": false,
     "ForceSpritesFirstColumn": false,
-    "RemoveSpriteLimit": false,
-    "AdaptiveSpriteLimit": false,
+    "RemoveSpriteLimit": true,
+    "AdaptiveSpriteLimit": true,
     "EnablePalBorders": false,
     "UseCustomVsPalette": false,
     "NtscOverscan": {
@@ -3383,8 +3383,8 @@
     "PpuExtraScanlinesBeforeNmi": 0,
     "PpuExtraScanlinesAfterNmi": 0,
     "DisableNoiseModeFlag": false,
-    "ReduceDmcPopping": false,
-    "SilenceTriangleHighFreq": false,
+    "ReduceDmcPopping": true,
+    "SilenceTriangleHighFreq": true,
     "SwapDutyCycles": false,
     "ReverseDpcmBitOrder": false,
     "Square1Volume": 100,
@@ -5929,7 +5929,7 @@
     "Channel5Vol": 100
   },
   "Preferences": {
-    "Theme": "Light",
+    "Theme": "Dark",
     "AutomaticallyCheckForUpdates": true,
     "SingleInstance": true,
     "AutoLoadPatches": true,
@@ -5960,7 +5960,7 @@
     "RewindBufferSize": 300,
     "AlwaysOnTop": false,
     "AutoHideMenu": false,
-    "ShowFps": false,
+    "ShowFps": true,
     "ShowFrameCounter": false,
     "ShowGameTimer": false,
     "ShowLagCounter": false,
@@ -5968,11 +5968,11 @@
     "ShowDebugInfo": false,
     "DisableOsd": false,
     "HudSize": "Fixed",
-    "GameSelectionScreenMode": "ResumeState",
+    "GameSelectionScreenMode": "Disabled",
     "FontAntialiasing": "SubPixelAntialias",
     "MesenFont": {
       "FontFamily": "Microsoft Sans Serif",
-      "FontSize": 11
+      "FontSize": 12
     },
     "MesenMenuFont": {
       "FontFamily": "Segoe UI",
@@ -5982,7 +5982,7 @@
       {
         "Shortcut": "FastForward",
         "KeyCombination": {
-          "Key1": 3,
+          "Key1": 150,
           "Key2": 0,
           "Key3": 0
         },
@@ -6112,8 +6112,8 @@
       {
         "Shortcut": "Reset",
         "KeyCombination": {
-          "Key1": 118,
-          "Key2": 61,
+          "Key1": 61,
+          "Key2": 0,
           "Key3": 0
         },
         "KeyCombination2": {
@@ -6125,8 +6125,8 @@
       {
         "Shortcut": "PowerCycle",
         "KeyCombination": {
-          "Key1": 118,
-          "Key2": 63,
+          "Key1": 49,
+          "Key2": 0,
           "Key3": 0
         },
         "KeyCombination2": {
@@ -6151,7 +6151,7 @@
       {
         "Shortcut": "Pause",
         "KeyCombination": {
-          "Key1": 13,
+          "Key1": 59,
           "Key2": 0,
           "Key3": 0
         },
@@ -6567,7 +6567,7 @@
       {
         "Shortcut": "SelectSaveSlot1",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 35,
           "Key2": 0,
           "Key3": 0
         },
@@ -6580,7 +6580,7 @@
       {
         "Shortcut": "SelectSaveSlot2",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 36,
           "Key2": 0,
           "Key3": 0
         },
@@ -6593,7 +6593,7 @@
       {
         "Shortcut": "SelectSaveSlot3",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 37,
           "Key2": 0,
           "Key3": 0
         },
@@ -6606,7 +6606,7 @@
       {
         "Shortcut": "SelectSaveSlot4",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 38,
           "Key2": 0,
           "Key3": 0
         },
@@ -6619,7 +6619,7 @@
       {
         "Shortcut": "SelectSaveSlot5",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 39,
           "Key2": 0,
           "Key3": 0
         },
@@ -6632,7 +6632,7 @@
       {
         "Shortcut": "SelectSaveSlot6",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 40,
           "Key2": 0,
           "Key3": 0
         },
@@ -6645,7 +6645,7 @@
       {
         "Shortcut": "SelectSaveSlot7",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 41,
           "Key2": 0,
           "Key3": 0
         },
@@ -6658,7 +6658,7 @@
       {
         "Shortcut": "SelectSaveSlot8",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 42,
           "Key2": 0,
           "Key3": 0
         },
@@ -6671,7 +6671,7 @@
       {
         "Shortcut": "SelectSaveSlot9",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 43,
           "Key2": 0,
           "Key3": 0
         },
@@ -6684,7 +6684,7 @@
       {
         "Shortcut": "SelectSaveSlot10",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 34,
           "Key2": 0,
           "Key3": 0
         },
@@ -6697,7 +6697,7 @@
       {
         "Shortcut": "MoveToNextStateSlot",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 151,
           "Key2": 0,
           "Key3": 0
         },
@@ -6710,7 +6710,7 @@
       {
         "Shortcut": "MoveToPreviousStateSlot",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 149,
           "Key2": 0,
           "Key3": 0
         },
@@ -6723,7 +6723,7 @@
       {
         "Shortcut": "SaveState",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 58,
           "Key2": 0,
           "Key3": 0
         },
@@ -6736,7 +6736,7 @@
       {
         "Shortcut": "LoadState",
         "KeyCombination": {
-          "Key1": 0,
+          "Key1": 52,
           "Key2": 0,
           "Key3": 0
         },
@@ -7126,8 +7126,8 @@
       {
         "Shortcut": "SaveStateSlot8",
         "KeyCombination": {
-          "Key1": 0,
-          "Key2": 0,
+          "Key1": 97,
+          "Key2": 116,
           "Key3": 0
         },
         "KeyCombination2": {
@@ -7139,8 +7139,8 @@
       {
         "Shortcut": "SaveStateSlot9",
         "KeyCombination": {
-          "Key1": 0,
-          "Key2": 0,
+          "Key1": 98,
+          "Key2": 116,
           "Key3": 0
         },
         "KeyCombination2": {
@@ -7152,8 +7152,8 @@
       {
         "Shortcut": "SaveStateSlot10",
         "KeyCombination": {
-          "Key1": 0,
-          "Key2": 0,
+          "Key1": 99,
+          "Key2": 116,
           "Key3": 0
         },
         "KeyCombination2": {
@@ -10112,14 +10112,14 @@
   },
   "MainWindow": {
     "WindowSize": {
-      "Width": 512,
-      "Height": 504
+      "Width": 1280,
+      "Height": 720
     },
     "WindowLocation": {
-      "X": 38,
-      "Y": 38
+      "X": 0,
+      "Y": 0
     },
-    "WindowIsMaximized": false
+    "WindowIsMaximized": true
   },
   "DefaultKeyMappings": "Xbox, WasdKeys"
 }
