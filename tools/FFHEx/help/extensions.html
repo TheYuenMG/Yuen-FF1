@@ -1,0 +1,159 @@
+<!DOCTYPE html><html><head><link rel="icon" type="image/x-icon" href="assets/ffhacksterex/ico/ffhacksterex.ico"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/ffhacksterex.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/icons.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/images.css"><style>html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 64px 1fr auto;
+}
+
+footer.sticky {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}</style><script>let FIX_FOUC_FOR_FIREFOX;</script></head><body><header class="nav" id="menuMainNav"><a class="home" href="index.html">FFHacksterEx Help</a><span class="nodisplay">&nbsp;</span><div class="menu"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><div class="dropdown"><a><span>Getting Started</span></a><div class="dropdown-submenu"><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><a class="separator my-0"><hr></a><a href="site-index.html">Site Index</a></div></div><div class="dropdown"><a><span>Features</span></a><div class="dropdown-submenu"><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a></div></div></div><a class="about-item right" href="about.html">About</a><div class="ff-thinmenu"><a class="menu row ff-thinmenu">Menu</a><div class="ff-sidenav"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><!-- Separators are skipped in the sidenav menu--><a href="site-index.html">Site Index</a><a class="separator my-0"><hr></a><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a><a class="separator my-0"><hr></a><a href="about.html">About</a></div></div></header><div class="page-content"><div class="indexed-page nodisplay">Extensions</div><div><h1 class="banner">Extensions</h1><hr class="banner"/></div><section><p>FFHacksterEx supports extending the program via DLLs. It's possible to write one or more DLLs and
+FFHacksterEx can load them when a project loads and call editors in those DLLs. The interface for
+this is unfortunately not the best, but it does work. Part of the problem is that the code is
+written in C++, which has no standard ABI (application binary interface), so taking objects across
+process boundaries is non-portable and can result in bad data, program crashes, etc.<br />
+[UPDATE] This has been ameilorated for Microsoft Visual C++ users, as MSVC 2015, 2017, and 2019
+now ship with ABI compatibility. Unforunately, I wrote this before I knew about that and have not
+had the time to go back and rewrite the extensions interface. I wanted to mention that here in case
+anyone forks this project.<br /></p>
+<p>The inteface currently uses a single function:<code class="tight">
+<pre>typedef char* (*InvokeFunc)(const EditorInterop * ei);</pre>
+</code>The hard details are in the following files (and it's messy, unfortunately):</p>
+<div class="digest">
+<table class="digest">
+<tr>
+<th>Project</th>
+<th>File</th>
+<th>Use</th>
+</tr>
+<tr>
+<td>ff1-coredefs</td>
+<td>EditorInterop.h</td>
+<td>Defines the prototype for the Invoke function, the structure used with it, and supported command verbs.</td>
+</tr>
+<tr>
+<td>ff1-coredefs</td>
+<td>Editors.h/cpp</td>
+<td>Defines the editor structs, classes, and functions used for built-in and custom editors.</td>
+</tr>
+<tr>
+<td>ff1-utils</td>
+<td>FFHExtensionModule.h/cpp</td>
+<td>Defines a base class used to implement supporting functionality common to all extensions.</td>
+</tr>
+</table>
+</div>
+<p>You'll make whatever changes you need to make the assembly or ROM, then make corresponding changes in an
+extension DLL. FFHEx can then load that extension and use the new and/or overridden editors to modify
+the altered ROM or assembly source code.<br/>
+The reference project, GoldItems, provides an example of how to implement an extension.
+You will need both the extension (source code or DLL) and the game (FFHEx project or patched ROM)
+to use FFHacksterEx with it.</p>
+<p>To use an extension DLL, place it into a location supported by FFHEx (more on that below). Then open
+the project with FFHEx. If the DLL is not already associated with the project, use the Editors button on the
+main window to make the association.<br />
+The DLL can also be placed in either the program folder or a special app-wide folder (called the
+additional modules folder). The editors defined by the DLL will be displayed in the Editors window;
+you might have to replace existing editors with the ones specified by the editor.</p></section><hr><div class="indexed-section nodisplay">levels-and-sources]=[Editor Levels and Sources</div><section id="levels-and-sources"><h1>Editor Levels and Sources</h1><p>Current extension support limits the locations of editors to the program folder, the project folder,
+and an app-wide extensions folder (also referred to as the additional modules folders). When FFHEx loads
+a project, it will scan these locations and note all extension DLL modules it finds. It will then examine
+each extension and extract all editor definitions from those editors.</p>
+<p>Similar editors will be grouped together and the list of represented editors will be displayed in
+the Editors window. Each line represents an editor. If the entire line is bold, then an extension is
+is being used for that editor. If the Source column is bold, then there are multiple options available
+to use for that editor; click the cell, and a dropdown will appear with the available options.</p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/golditems-editors-window.jpg" width="800" height="429"><div class="digest">
+<table class="digest">
+<tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr>
+<tr>
+<td>Editor</td>
+<td>This is the internal name of the editor. Checks against the editor will use this name.</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>States whether the selected handler will show or hide the editor on the main screen.</td>
+</tr>
+<tr>
+<td>Displayname</td>
+<td>The name for this editor shown on the main window.</td>
+</tr>
+<tr>
+<td>Level</td>
+<td>The semantic level of the selected editor, dictated by its location.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source (currently the filename) of the editor.</td>
+</tr>
+<tr>
+<td>Path</td>
+<td>The path to the source (e.g. the directory).</td>
+</tr>
+</table>
+</div>
+<h3>Levels</h3>
+<p>Levels refer to the semantic level of the editor, based on the location of the editor.
+Currently, Level is purely informational.</p>
+<div class="digest">
+<table class="digest">
+<tr>
+<th>Level</th>
+<th>Meaning</th>
+</tr>
+<tr>
+<td>Builtin</td>
+<td>This editor is hardcoded into the program source code.</td>
+</tr>
+<tr>
+<td>Excluded</td>
+<td>The editor is excluded, which hides it from view in the main window.</td>
+</tr>
+<tr>
+<td>App</td>
+<td>The editor is defined by an extension module in the program folder.</td>
+</tr>
+<tr>
+<td>ProjExtFolder</td>
+<td>The editor is defined by an extension module in the project's Additional Modules folder.</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>The editor is defined by an extension module in the project folder.</td>
+</tr>
+</table>
+</div></section><hr><div class="indexed-section nodisplay">insert-override-exclude]=[Add, Override, and Remove Editors</div><section id="insert-override-exclude"><h1>Add, Override, and Remove Editors</h1><img class="paddedimage scaledown" src="assets/ffhacksterex/img/golditems-main-window.jpg" width="800" height="527"><p>Extensions return editor entries to specify added, overridden, and excluded editors.<br />
+Note above that the GoldItems extension adds a Gold editor and overrides several others, as indicated
+by the altered display names.</p>
+<p>To add a new custom editor, the extension specifies an editor with a non-built-in name.<br />
+To override a built-in editor, the extension specifies an editor with a built-in name.<br />
+To exclude an editor, the extension sets the show field to false to hide that editor.
+Both built-in and new custom editors can be excluded.<br /></p>
+<p>Hiding a custom editor is handy when (say) you want to remove a subset of editors from an existing extension,
+e.g. you edit your hack to remove one or two features from the previous release. Instead of releasing a new
+extension that reimplements everything, you release a new extension that hides the one or two editors and
+adds the new implementation.<br />
+Built-in editors can also be hidden. For example, if you decide to make a MUD or dungeon crawler
+hack that doesn't include shops, then you could hide the built-in shop editor.</p>
+<p>NOTE: for Visual Studio users, you can debug the extension by opening the Visual Studio solution for
+the extension and setting your project to use the App level extension DLL; you will see
+this when using the Editors window from the main window.<br/>
+If you have the FFHEx source, you can then debug into that as well as long as it's in the same solution.</p><hr><h3>Overridden Editors</h3>
+<p>As an example of overriding editors, the GoldItems patch overrides the Text editor to remove the Gold category.
+Since gold is now printed directly from its value, the hack no longer references the table of gold strings.</p>
+<img class="paddedimage" src="assets/ffhacksterex/img/golditems-text-editor.jpg" />
+<p>The GoldItems patch adds the ability to have NPCs award money to the party. To allow the hack designer to
+impart this ability to sprites, the GoldItems extension also overrides the Sprite Dialogue editor.<br />
+Pictured above, sprite A2 is reassigned the role (and label) of Benefactor and is set to use a custom routine that
+gives money to the party. The GoldItems extension uses a custom list loader that builds
+text from the value of the actual gold items. It also loads price data (the built-in editor does not).<br /></p>
+<p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/golditems-sprite-dialogue-editor.jpg"></p><hr><h3>Added Editors</h3>
+<p>The GoldItems extension adds a Gold editor.<br />
+This editor can modify the items in the price list that represent gold.<br />
+It also allows the suffix to be modified (within limits), supporting DTE.<br /></p>
+<img class="paddedimage" src="assets/ffhacksterex/img/golditems-gold-editor.jpg" /></section><section><p>For information about creating extension DLLs, see <a href="extension-creation.html">Extension Creation</a>.</p></section></div><footer class="border-white"><a class="row automargin backtotop" href="extensions.html#top">Back to top</a><div class="py-2 mb-0"><div class="row automargin madeby"><h1 class="my-1">FFHacksterEX</h1></div><div class="row automargin"><span class="font-xl"><span class="px-1">v0.9.8.2</span></span></div><div class="row automargin"><span>Site Copyright (C) 2025 Esselle Jaye</span></div><div class="automargin mt-1 mb-0"><ul class="social-footer font-md"><li><a href="mailto:ffhacksterex@gmail.com">Email</a></li><li><a href="https://www.youtube.com/channel/UCXu9vrNQOYzvzebgxkpOckA">YouTube</a></li></ul></div></div><div class="back-black py-2 mb-0"><div class="row automargin ddfnt font-md"><a href="https://digitaldreamers.org/"><h1 class="my-0">DIGITAL DREAMERS</h1></a></div><div class="row automargin"><span class="font-md"><span>Copyright 2025 </span><span>Esselle Jaye</span></span></div></div></footer></body></html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html><html><head><link rel="icon" type="image/x-icon" href="assets/ffhacksterex/ico/ffhacksterex.ico"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/ffhacksterex.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/icons.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/images.css"><style>html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 64px 1fr auto;
+}
+
+footer.sticky {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}</style><style>code > pre.accent, .code > pre.accent {
+    font-weight: bold !important;
+    font-size: larger;
+}
+</style><script>let FIX_FOUC_FOR_FIREFOX;</script></head><body><header class="nav" id="menuMainNav"><a class="home" href="index.html">FFHacksterEx Help</a><span class="nodisplay">&nbsp;</span><div class="menu"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><div class="dropdown"><a><span>Getting Started</span></a><div class="dropdown-submenu"><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><a class="separator my-0"><hr></a><a href="site-index.html">Site Index</a></div></div><div class="dropdown"><a><span>Features</span></a><div class="dropdown-submenu"><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a></div></div></div><a class="about-item right" href="about.html">About</a><div class="ff-thinmenu"><a class="menu row ff-thinmenu">Menu</a><div class="ff-sidenav"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><!-- Separators are skipped in the sidenav menu--><a href="site-index.html">Site Index</a><a class="separator my-0"><hr></a><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a><a class="separator my-0"><hr></a><a href="about.html">About</a></div></div></header><div class="page-content"><div class="indexed-page nodisplay">Sprite Dialogue Data</div><div><h1 class="banner">Sprite Dialogue Data</h1><hr class="banner"/></div><section><h1 class="highlight">Background</h1><p>The Sprite Dialogue Editor handles the events found in the dialogue event routines (found in Bank E
+of a clean FF1 ROM image). These routines specify a series of actions, and typically refer to either
+a hardcoded value or a collection of parameters to identfy in-game entities.</p><p><div>Each sprite in the game has four parameters (each being an 8-bit value) to use with its routine.</div><div>A table in the ROM assigns a routine to each sprite.</div></p><p><div>Paulygon's FFHPlus Sprite Dialogue editor allowed for editing of both parameter data and hardcoded values.</div><div>I wanted the same thing in FFHEx, but I had two problems:</div></p><ol><li>I didn't have the source for FFHPlus, so I'd have to write it from scratch;</li>
+<li>It worked for ROM, but how could I make it work for assembly?</li></ol><p><div>I didn't want to hardcode the data used to populate the editor, so I created a small Ini file
+(yeah, I know) to store the information for each handler. The editor won't function without this
+file. In the project folder, you should find a file with the extension ".dialogue". That file
+holds the information used to populate the editor.</div><div>The assembly project can simply refer to the elements in the same file, which means the file
+should work for both an assembly project and the ROM image it produces when compiled.</div></p></section><hr><div class="indexed-section nodisplay">sprite-data]=[</div><section id="sprite-data"><h1 class="highlight">Sprite Data</h1><article><h3 class="highlight">Sprites, Events, and Flags</h3><p><div>A sprite is a visible NPC placed on a standard map.</div><div>Sprites occupy a single tile on the map and move around in a 
+random pattern one step at a time.</div><div>The player can interact with a sprite using the A button.
+Sprites are game objects.</div></p><p><div>An event is a routine in the game that is intended to execute 
+instructions as a result of interaction with a game object.</div><div>These routines make certain assumptions regarding values in memory, 
+and about other setup routines having already been called to 
+prime values in memory.</div></p><p> <div>A game object flags is a byte that is set to indicate that a 
+specific event has happened (e.g. has Nerrick received the TNT?).</div><div>Since each sprite is a game object, each sprite has an entry in the 
+table of game object event flags.</div></p></article><article><h3 class="highlight">Sprite Table</h3><p><div>The sprite table is a table containing the details of each sprite
+in the game - details such as X position, Y position, room flag,
+graphic ID, etc..</div><div>In FFHEx, the names of the sprites are stored as editor settings;
+the game itself does not store labels for the sprites.</div></p></article><article><h3 class="highlight">Sprite Routine Params Table</h3><p> <div>Each sprite has 4 parameters,
+which vary according to the routine assigned to the sprite.</div><div>A table (in Bank E in the original game) holds param entries for each 
+sprite in the game; each row in the table holds 4 bytes representing 
+the parameters for the corresponding sprite's event routine.</div><div>By default, the params occur in the same order as the 
+sprite table.</div></p></article><article><h3 class="highlight">Sprite Routine Jump Table</h3><p> <div>In bank E (original game) there's a table holding the bank address
+of the event routine assigned to the corresponding sprite.
+Sans code changes, the game only supports a single routine per sprite.</div><div>By default, the routines occur in the same order as the 
+sprite table.</div></p></article><article> <h3 class="highlight">Sprite Routines</h3><p> </p><div>Routines implement various kinds of interaction, ranging from 
+setting game object flags to adding weapons to inventory.</div><div>The routines can also use hard coded IDs to refer to any of those 
+same entites (sprites, game objects, flags, weapons, items, etc.);</div><p><div>For example, the King of Coneria hard codes the ID of the Rescued Princess 
+to determine whether or not the bridge needs to be built.</div><div>Similarly, the Rescued Princess hard codes the RAM address of the LUTE when she 
+checks to see if she needs to give it to you or you already have it.</div><div>Because of the differing hard coded values, they both need a dedicated routine.</div></p><p><div>On the other hand, each of the four ORBs uses its first three sprite params 
+to indicate the ORB sprite to hide, the boss battle to launch, and the text to 
+display before battle.</div><div>By using params instead of hard coded IDs, all four sprites can use the same routine.</div></p></article></section><hr><div class="indexed-section nodisplay">the-dialogue-file]=[The '.dialogue' File</div><section id="the-dialogue-file"><h1 class="highlight">The .dialogue File</h1><p><div>The ".dialogue " file contains Ini sections. Some are for general-purpose information,
+a couple are specific to assembly projects, and the rest are mappings for each routine
+used in the game.</div><div>We'll cover each section in the file, giving an explantion of its contents and usage.</div></p><article><h3 class="highlight">[VALUETYPES]</h3><p><div> This section provides bit widths and descriptive names for the supported types.
+ Bit widths are used to evaluate and process dialogue elements.</div><div>See <a href="sprite-dialogue-data.html#value-types">Value Types</a> below for more information about the value
+types that are used in the editor.</div></p></article><article><h3 class="highlight">[Label_TalkJumpTable]</h3><code class="ini"><div>[Label_TalkJumpTable]
+value=lut_MapObjTalkJumpTbl
+desc=Label denoting the start of the Talk handler jump table</div></code><p><div>Used by Assembly projects only.</div><div>The value contains the label marking the start of the sprite routine mapping list.
+The list contains a label (i.e. bank address) for each sprite in the game. Assembly
+projects read this label to know where to start reading the list.</div><div>The list length is known, so no marker is explicitly required needed to indicate its end.</div></p></article><article><h3 class="highlight">[Label_EndParsingMarker]</h3><div class="ml-2"><code class="ini tight"><pre>[Label_EndParsingMarker]</pre><pre>value=|:endtalkparsing</pre><pre>desc=Marker that signals the end of talk handler parsing</pre></code></div><p><div>Used by Assembly projects only.</div><div>The value contains the marker used to unambiguously indicate the end of the routines. 
+The editor will stop parsing the file when it reaches this marker.</div><div> This isn't strictly necessary since the list length is known, but can useful to prevent 
+the sprite editor from parsing extra whitespace lines occurring after the list.</div></p></article><article><h3 class="highlight">Dialogue routines</h3><div class="ml-2"><code class="ini tight"><pre>[<span class="bold largertext">RoutineLabel</span>]</pre><pre><span class="bold largertext">desc</span>={Description of the routine}</pre><pre><span class="bold largertext">bankaddr</span>=0x{hex address}</pre><pre><span class="bold largertext">elem0</span>={type}|{funcoffset}|{paramindex}|{comment}</pre><pre>...</pre><pre><span class="bold largertext">elemN</span>={type}|{funcoffset}|{paramindex}|{comment}</pre></code></div><div class="digest"><table class="digest"><thead><tr><th>Field name</th><th>Detail</th></tr></thead><tbody><tr><td>Routine Label</td><td>A label identifying the routine.<div><span class="accent">In ROM Projects</span><div class="ml-3">Only used to identify the routine by name.</div></div><div><span class="accent">In Assembly Projects</span><div class="ml-3">The name of the routine in the assembly source file.</div><div>The label here must match the name of the routine label
+in the assembly source file <span class="accent italic underline">verbatim.</span></div></div></td></tr><tr><td>desc</td><td>A description of the field.<div>This is not used by FFHEx; it was used by previous external editing tools.</div></td></tr><tr><td>bankaddr</td><td>The in-bank address of the start of the routine.<div> Pay close attention to the fact that this is **NOT** a ROM offset. Using 
+a ROM offset here will likely crash your game or corrupt memory when 
+the event fires.</div></td></tr><tr><td>elem[0 - N]</td><td>A trio of pipe-separated values defining a dialog routine element.<div><span class="accent">type</span><div class="ml-3"> the element value type, as specified in Values Types below.</div></div><div><span class="accent">funcoffset</span><div class="ml-3">offset in bytes from the start of the routine</div></div><div><span class="accent">paramindex</span><div class="ml-3">index into the sprite's 4-element parameter array, -1 if not used (i.e. hardcoded).</div></div><div><span class="accent">comment</span><div class="ml-3">shown in the editor to help identify the element's purpose.</div></div></td></tr></tbody></table></div></article></section><hr /><div class="indexed-section nodisplay">value-types]=[</div><section id="value-types"><h1 class="highlight">Value Types</h1><h3 class="highlight">Param types</h3><p><div>These type will expect a value from 0-3, which is an index into the sprite's 4-byte
+parameter array. Each sprite in the game has its own 4-byte parameter list.
+There's not a fixed format for them, but most routines use index 0 to represent
+the sprite taking the action.</div><div>Consult the assembly source for more details on each routine uss its parameters.</div></p><div class="digest"><table class="digest"><tr><th>Type name</th><th>Detail</th></tr>
+<tr>
+<td class="rowlabel">text</td>
+<td>Index of dialog text (pointer table)</td>
+</tr>
+<tr>
+<td class="rowlabel">spr</td>
+<td>Index of a sprite, this is a reference to another sprite.<div>This can be any sprite in the game, not just the ones on the current map.</div></td>
+</tr>
+<tr>
+<td class="rowlabel">obj</td>
+<td>Same as spr (visibility change - semantic difference)</td>
+</tr>
+<tr>
+<td class="rowlabel">event</td>
+<td>Same as spr (event flag check  - semantic difference)</td>
+</tr>
+<tr>
+<td class="rowlabel">battle</td>
+<td>Index of a battle</td>
+</tr>
+<tr>
+<td class="rowlabel">item</td>
+<td><div>Index of item, added to(unsram + $20).</div><div>Index is added to the RAM address specified by the unsram RAM value.</div></td>
+</tr>
+<tr>
+<td class="rowlabel">weapon</td>
+<td>Index of a weapon</td>
+</tr>
+<tr>
+<td class="rowlabel">gold</td>
+<td>Index of a gold item</td>
+</tr></table></div><h3 class="highlight">Hardcoded types</h3><p><div>These expect to read one or more bytes which directly represent either a value
+or an address. The routines dictate how the values are actually used, but the types
+instruct the editor toload them in a way that the routine would expect.</div><div>Consult the assembly source for more details on how each routine ues its hardcoded values.</div></p><div class="digest"><table class="digest"><tr><th>Type name</th><th>Detail</th></tr>
+<tr>
+<td class="rowlabel">hctext</td>
+<td>1-byte index of dialog text (index into the text pointer table)</td>
+</tr>
+<tr>
+<td class="rowlabel">hcspr</td>
+<td>1-byte sprite index</td>
+</tr>
+<tr>
+<td class="rowlabel">hcobj</td>
+<td>1-byte sprite index - semantically, a visibility change</td>
+</tr>
+<tr>
+<td class="rowlabel">hcevent</td>
+<td>1-byte sprite index - semantically, an event flag check<div>(has this event happened yet?)</div></td>
+</tr>
+<tr>
+<td class="rowlabel">hcbattle</td>
+<td>1-byte battle index</td>
+</tr>
+<tr>
+<td class="rowlabel">hcitem</td>
+<td>2-byte address of item (includes unsram + $20).<div>This is the actual RAM address of the item.</div></td>
+</tr>
+<tr>
+<td class="rowlabel">hcmap</td>
+<td>2-byte overworld map object (canal, bridge, etc.).<div>This is the RAM address of the overworld object in question.</div></td>
+</tr>
+<tr>
+<td class="rowlabel">hcweapon</td>
+<td>1-byte weapon index</td>
+</tr>
+<tr>
+<td class="rowlabel">hcgold</td>
+<td>1-byte gold item index</td>
+</tr>
+<tr>
+<td class="rowlabel">hcitemorcanoe</td>
+<td>2-byte item or canoe.<div>This is the RAM address of the object in question.</div></td>
+</tr>
+<tr>
+<td class="rowlabel">hcitemormap</td>
+<td>2-byte item or Overworld map object.<div>This is the RAM address of the object in question.</div></td>
+</tr>
+<tr>
+<td class="rowlabel">hcfanfare</td>
+<td><div>2-byte value to increment the sound register or ignore it:</div><div>E6 7D = play the sound</div><div>EA EA = on't play the sound</div><div><a href="sprite-dialogue-data.html#fanfare-note"><span class="bold largertext">* SEE NOTE BELOW</span></a></div></td>
+</tr>
+<tr>
+<td class="rowlabel">hcnntele</td>
+<td>1-byte, index of NN teleport</td>
+</tr>
+<tr>
+<td class="rowlabel">hcnotele</td>
+<td>1-byte, index of NO teleport</td>
+</tr>
+<tr>
+<td class="rowlabel">hcuint8</td>
+<td>1-byte decimal value</td>
+</tr>
+<tr>
+<td class="rowlabel">hcbyte</td>
+<td>1-byte hex value</td>
+</tr></table></div><div class="indexed-section nodisplay">fanfare-note]=[About the Hardcoded Fanfare type (hcfanfare)</div><div id="fanfare-note"><span>* <span class="bold underline">About hcfanfare usage</span></span><p><div>Putting two hcfanfare elements back-to-back with the value E67D will play the
+treasure chest sound. The only place where this is done in the game is the
+Black Orb's routine. To make this happen with any other routine requires
+an assembly hack.</div><div>In the code, this increments a byte in RAM twice (effectively setting it to 2),
+which tells the sound subsystem to play the treasure chest sound instead of
+the fanfare (which plays if set to 1).</div></p></div></section><hr><div class="indexed-section nodisplay">an-example]=[</div><section id="an-example"><h1 class="highlight">An example</h1><article class="mb-5"><h1 class="font-2x my-1">FFHPlus</h1><p>I took inspiration from FFHPlus, which shows the elements of the event and
+editing on many of them. The three Text fields are parameters. The Weapon received
+and the "Weapon slots full" text are hardcoded.</p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/ffhplus-dialogue-editor.jpg"></article><article><h1 class="font-2x my-1">FFHEx</h1><p><div>FFHEx expands on the idea and exposes more of the elements composing the routine.</div><div>The object that will be affected by event is now configurable (in this case, the Blacksmith).</div><div>There's an option to prevent the fanfare from playing, if desired.</div><div>The conditional object is also configurable now (here, ADAMANT).</div><div>The comments tell what each element will do, and they are editable.</div></p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/dwarven-blacksmith-dialogue.jpg" width="800" height="400"><p><div>Notice the Type column; it shows the type names (not descriptions for them).</div><div>The blacksmith has a mix of hardcoded and parameterized values. Each line is represented</div><div>in the ".dialogue" file with an element.</div><div>In a ROM, the bank addresses in the elem tags are are used to reference the ROM data.</div><div>In assembly projects, assembly source refers to the elem tags directly.</div></p><p><div>Again, this is why the Annotated Disch disassembly is required for this to work.</div><div>Without the tags, there's currrently no other way the assembly source could be matched to the elements.</div></p></article><article><h3>In the .dialogue file</h3><h4>The Blacksmith's Routine</h4><p>The elements in the editor reflect what is in the ".dialogue" file. This is how an entry in the file looks as plain text:</p><p><div class="ml-2"><code class="tight"><pre>[Talk_Smith]</pre><pre>desc=Dwareven Blacksmith</pre><pre>bankaddr=0x936C</pre><pre>elem0=hcobj|0x1|-1|sprite to check (already have XCalber)</pre><pre>elem1=text|0x8|3|final (already made XCalber)</pre><pre>elem2=hcitem|0xB|-1|item to check (do we have adamant)</pre><pre>elem3=text|0x10|1|Initial (no adamant yet)</pre><pre>elem4=hcweapon|0x18|-1|weapon to give to party (XCalber)</pre><pre>elem5=hcobj|0x1D|-1|map obj to set (Smith just made XCalber)</pre><pre>elem6=hcitem|0x22|-1|item to remove (take Adamant from party)</pre><pre>elem7=hcfanfare|0x24|-1|fanfare</pre><pre>elem8=text|0x27|2|condition met (Smith now makes XCalber)</pre><pre>elem9=hctext|0x2A|-1|no room for weapon ('don't be greedy')</pre></code></div></p><h4>Same routine with elements highlighted</h4><p><div class="ml-2"><code class="tight"><pre>[Talk_Smith]</pre><pre>desc = Dwareven Blacksmith</pre><pre>bankaddr = 0x936C</pre><pre>elem0 = <span class="diatype">hcobj    </span>  |  <span class="diaoffset">0x1 </span>  | -1  |  <span class="diacomment">sprite to check (already have XCalber)</span></pre><pre>elem1 = <span class="diatype">text     </span>  |  <span class="diaoffset">0x8 </span>  |  <span class="diaoffset">3</span>  |  <span class="diacomment">final (already made XCalber)</span></pre><pre>elem2 = <span class="diatype">hcitem   </span>  |  <span class="diaoffset">0xB </span>  | -1  |  <span class="diacomment">item to check (do we have adamant)</span></pre><pre>elem3 = <span class="diatype">text     </span>  |  <span class="diaoffset">0x10</span>  |  <span class="diaoffset">1</span>  |  <span class="diacomment">Initial (no adamant yet)</span></pre><pre>elem4 = <span class="diatype">hcweapon </span>  |  <span class="diaoffset">0x18</span>  | -1  |  <span class="diacomment">weapon to give to party (XCalber)</span></pre><pre>elem5 = <span class="diatype">hcobj    </span>  |  <span class="diaoffset">0x1D</span>  | -1  |  <span class="diacomment">map obj to set (Smith just made XCalber)</span></pre><pre>elem6 = <span class="diatype">hcitem   </span>  |  <span class="diaoffset">0x22</span>  | -1  |  <span class="diacomment">item to remove (take Adamant from party)</span></pre><pre>elem7 = <span class="diatype">hcfanfare</span>  |  <span class="diaoffset">0x24</span>  | -1  |  <span class="diacomment">fanfare</span></pre><pre>elem8 = <span class="diatype">text     </span>  |  <span class="diaoffset">0x27</span>  |  <span class="diaoffset">2</span>  |  <span class="diacomment">condition met (Smith now makes XCalber)</span></pre><pre>elem9 = <span class="diatype">hctext   </span>  |  <span class="diaoffset">0x2A</span>  | -1  |  <span class="diacomment">no room for weapon ('don't be greedy')</span></pre></code></div></p></article><article><h3>Source with element annotations</h3><p><div>The elements specified in the ".dialogue" file follow events in the ROM or assembly source.</div><div>The bank address refers to the in-bank location of the start of the routine.</div><div>For Assembly projects, the elem tags refer to those same tags that are present in the source.</div><div>Look at the source for the Talk_Smith routine below, and note how the elements follow the</div><div>flow of the routine:</div></p><p><div class="ml-2"><div class="code tight"><pre>Talk_Smith:</pre><pre>    LDY #OBJID_SMITH         ; check Smith's event flag to see if we already made      ;|:elem0</pre><pre>    JSR CheckGameEventFlag   ;  the Xcalbur for the party</pre><pre>    BCC @WantSword           ; if he already made it....</pre><pre>      LDA tmp+3              ; ... then simply print [3]                               ;|:elem1</pre><pre>      RTS</pre><pre>&nbsp;</pre><pre>  @WantSword:</pre><pre>    LDA item_adamant         ; otherwise check to see if party has the Adamant         ;|:elem2</pre><pre>    BNE @HaveAdamant         ; if not...</pre><pre>    LDA tmp+1                ; ... simply print [1]                                    ;|:elem3</pre><pre>    RTS</pre><pre>&nbsp;</pre><pre>  @HaveAdamant:              ; otherwise, make the sword!</pre><pre>    JSR FindEmptyWeaponSlot  ; find an empty slot</pre><pre>    BCS @WontFit             ; if no empty slot, sword won't fit</pre><pre>      LDA #WPNID_XCALBUR     ; put the XCalbur in the previously found slot            ;|:elem4</pre><pre>      STA ch_stats, X</pre><pre>      LDY #OBJID_SMITH       ; set Smith's event flag to mark that we made the sword   ;|:elem5</pre><pre>      JSR SetGameEventFlag</pre><pre>      DEC item_adamant       ; take the Adamant away from the party                    ;|:elem6</pre><pre>      INC dlgsfx             ; play fanfare                                            ;|:elem7 ? "INC dlgsfx" : "NILS 2"</pre><pre>      LDA tmp+2              ; and print [2]                                           ;|:elem8</pre><pre>      RTS</pre><pre>&nbsp;</pre><pre>  @WontFit:                  ; if XCalbur won't fit in the inventory...</pre><pre>    LDA #DLGID_DONTBEGREEDY  ; print "Don't be Greedy" text (note:  hardcoded)         ;|:elem9</pre><pre>    RTS</pre></div></div></p></article><article><h3>Standard elements</h3><p>Typical elements will replace either a sprite parameter or a hardcoded value with the value selected in the editor.</p><h3>Conditional Elements</h3><p><div>Conditional clauses (e.g. elem7) controls how the source is loaded and saved.</div><div>The conditional clause has this form:</div></p><blockquote><pre>;|:elem7 ? "INC dlgsfx" : "NILS 2"</pre></blockquote><p>The clause consists of three parts: </p><ul><li>The element marker<pre>;|:elem7</pre><p>This links the line to the corresponding entry in the dialogue file.
+It tells the dialogue editor to associate the entry in the editor
+with the element defined by key "elem7" in the file.</p></li><li>The first ("true") code snippet<pre>"INC dlgsfx"</pre><p>The code used in the loading and saving scenarios described below.</p></li><li>The second ("false") code snippet<pre>"NILS 2"</pre><p>The code used in the loading and saving scenarios described below.</p></li></ul><p><b>Loading: </b><span>the assembly source line's code (non-comment) portion is compared to the quoted strings.</span><ul><li>If the code equals what's in the first (true) quoted string, then pass the value 1 to the editor;</li>
+<li>If the code equals what's in the second (false) quoted string, then pass the value 0 to the editor;</li>
+<li>otherwise, pass a value telling the editor to ignore this and do not edit it.</li></ul></p><p><b>Saving: </b><span>the editor's value is sent to the serializer.</span><ul><li>If the value equals 1, write the source in the first (true) quoted string as the assembly's code portion;</li>
+<li>If the value equals 0, write the source in the second (false) quoted string as the assembly's code portion;</li>
+<li>otherwise, don't change the line at all, keep it intact.</li></ul></p><p><div>In this example, if the selection for this line in the editor (<b>elem7</b>) evaluates 
+to 1, then "INC dlgsfx" is written as the code on the matching line in 
+the assembly source file (which plays the fanfare sound when opening a chest).</div><div>If the value evaluates to zero, then "NILS 2" is wtitten instead; this translates
+to two NOPs, meaning that the instruction to queue the fanfare is never written
+(and therefore the fanfare won't be played.</div><div>If the editor returns any other value, no action is taken and the assembly 
+source code line is written in its original, unaltered form.</div></p></article></section><hr><div class="indexed-section nodisplay">adding-sprite-routines]=[</div><section id="adding-sprite-routines"><h1 class="highlight">Adding Sprite Routines</h1><article><p>Suppose we want to add a routine that unconditionally gives money to the party on first contact, then urges them to revive the orbs thereafter. To do so we:<p><div><span class="accent">Assembly Project</span><ul class="mt-0"><li>Add assembly code to define the routine.</li><li>Update the dialog file to tell the editor about the changes to the ROM layout for the routine.                        </li></ul></div></p><p><div> <span class="accent">ROM Project</span><ul class="mt-0"><li>Add bytes via a hex editor to define the routine;</li><li>Update the dialog file to tell the editor about the changes to the ROM layout for the routine.</li></ul></div></p></p></article><article><h3>Adding the routine as assembly source</h3><p><div>Once you've made space in the bank (E in the original game), you can add the routine.</div><div>Suppose we add this customized dialogue routine to the assembly source file that
+unconditionally gives money to the party on first contact, then urges them to 
+revive the orbs thereafter:</div></p><div class="ml-2"><code class="tight"><pre>;; An NPC will unconditionally award you some money.</pre><pre>;;  [1] The golditem index to award</pre><pre>;;  [2] displays the message that prints how much money you received</pre><pre>;;  [3] a message of encouragement after awarding the money</pre><pre>&nbsp;</pre><pre>Talk_NPCAwardMoney:</pre><pre>  JSR CheckMyEventFlag         ; checks [0] (this sprite's event flag)</pre><pre>  BCS :+                       ; if not tripped</pre><pre>    JSR NPCAwardMoney          ; sets 0, awards gold in [1], and sets dlg_itemid to [1]</pre><pre>   &nbsp;<span class="callout">DLGPARAM tmp+1             ; tell the editor that [1] = golditem ID to give            ;|:elem0</span></pre><pre>    LDA tmp+2                  ; print [2], which should display dlg_itemid using {02}     ;|:elem1</pre><pre>  RTS</pre><pre>  :</pre><pre>  LDA tmp+3                    ; already gave, print [3]                                   ;|:elem2</pre><pre>  RTS</pre></code></div><h3>The DLGPARAM macro</h3><span class="asmnote accent">Assembly-Specific</span><p>This macro tells the assembly version of the dialogue editor that a sprite dialogue param should be associated
+to the dialogue element specified on the same line.</p><p>The sprite dialogue param is 1 (encoded as tmp+1) and the element is 0 (elem0).</p><p>The DLGPARAM macro doesn't generate code; it's a hack (indeed) that allows the assembly editor
+to associate the element on this line with the sprite dialog param indentified by the DLGPARAM parameter. In this case,
+<b>tmp+1</b> specifies sprite param index 1, so the the editor will refer to that param when editing this element.</p><p><div>This is needed because the param <span class="bold">is never referenced in this routine</span>; it's referenced by
+another routine named NPCAwardMoney, but not in this routine. Remember that the assembly editor reads the line
+with the marker on it and extracts the param index from it. Without some way to tell the assembly editor that
+param index 1 is used here, there's no convenent way to edit the param (and change the amount of money awarded).</div><div>DLGPARAM allows that to happen without actually emitting in code (and therefore having no side effect on the game).</div></p><p>While it is a hack, it helps to keep all relevant information for the operation on the same line. Short of
+an assembly parser embedded in the app, it was the quickest thing I came up with.</p></article><article><h3>Adding the routine as hex bytes</h3><p>In a clean ROM, at hex offset 0x39596, replace these bytes: <div class="ml-2"><code class="tight"><pre class="accent">ad 2e 60 f0 03 a5 12 60 ee 2e 60 a5 11 60</pre></code></div></p><p>with these:<div class="ml-2"><code class="tight"><pre class="accent">20 a7 b4 b0 06 20 3d bf a5 12 60 a5 13 60</pre></code></div></p><p> The new routine (in hex) becomes: <div class="ml-2"><code class="tight"><pre>20 a7 b4    -&gt; JSR CheckMyEventFlag         ; checks [0] (this sprite's event flag)</pre><pre>b0 06       -&gt; BCS :+                       ; if not tripped</pre><pre>20 3d bf    -&gt;   JSR NPCAwardMoney          ; sets 0, awards gold in [1], and sets dlg_itemid to [1]</pre><pre>            -&gt;                             &nbsp;<span class="callout">; DLGPARAM excluded since it's **NOT** an assembly instruction</span></pre><pre>a5 12       -&gt;   LDA tmp+2                  ; print [2], which should display dlg_itemid using {02}     ;|:elem1</pre><pre>60          -&gt;   RTS</pre><pre>            -&gt; :                           &nbsp;<span class="callout">; labels (of all types) are also not assembly instructions</span></pre><pre>a5 13       -&gt; LDA tmp+3                    ; already gave, print [3]                                   ;|:elem2</pre><pre>60          -&gt; RTS</pre></code></div></p></article><article><h3>Updating the .dialogue file to add the routine entry</h3><div class="ml-2"><code class="tight"><pre>;;; An NPC will unconditionally award you some money.</pre><pre>;;;  [1] The golditem index to award</pre><pre>;;;  [2] displays the message that prints how much money you received </pre><pre>;;;  [3] a message of encouragement after awarding the money</pre><pre>&nbsp;</pre><pre>[Talk_NPCAwardMoney]</pre><pre>desc=Routine for NPCs who award money</pre><pre>bankaddr=0x9586</pre><pre>elem0=gold|1|golditem index to award</pre><pre>elem1=text|2|text when awarding the money</pre><pre>elem2=text|3|text if money was previously given</pre></code></div><p>At this point, the routine should be available when the Dialogue Editor loads.</p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/golditems-sprite-dialogue-editor.jpg" width="800" height="400"></article></section></div><footer class="border-white"><a class="row automargin backtotop" href="sprite-dialogue-data.html#top">Back to top</a><div class="py-2 mb-0"><div class="row automargin madeby"><h1 class="my-1">FFHacksterEX</h1></div><div class="row automargin"><span class="font-xl"><span class="px-1">v0.9.8.2</span></span></div><div class="row automargin"><span>Site Copyright (C) 2025 Esselle Jaye</span></div><div class="automargin mt-1 mb-0"><ul class="social-footer font-md"><li><a href="mailto:ffhacksterex@gmail.com">Email</a></li><li><a href="https://www.youtube.com/channel/UCXu9vrNQOYzvzebgxkpOckA">YouTube</a></li></ul></div></div><div class="back-black py-2 mb-0"><div class="row automargin ddfnt font-md"><a href="https://digitaldreamers.org/"><h1 class="my-0">DIGITAL DREAMERS</h1></a></div><div class="row automargin"><span class="font-md"><span>Copyright 2025 </span><span>Esselle Jaye</span></span></div></div></footer></body></html>

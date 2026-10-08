@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><link rel="icon" type="image/x-icon" href="assets/ffhacksterex/ico/ffhacksterex.ico"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/ffhacksterex.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/icons.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/images.css"><style>html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 64px 1fr auto;
+}
+
+footer.sticky {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}</style><script>let FIX_FOUC_FOR_FIREFOX;</script></head><body><header class="nav" id="menuMainNav"><a class="home" href="index.html">FFHacksterEx Help</a><span class="nodisplay">&nbsp;</span><div class="menu"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><div class="dropdown"><a><span>Getting Started</span></a><div class="dropdown-submenu"><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><a class="separator my-0"><hr></a><a href="site-index.html">Site Index</a></div></div><div class="dropdown"><a><span>Features</span></a><div class="dropdown-submenu"><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a></div></div></div><a class="about-item right" href="about.html">About</a><div class="ff-thinmenu"><a class="menu row ff-thinmenu">Menu</a><div class="ff-sidenav"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><!-- Separators are skipped in the sidenav menu--><a href="site-index.html">Site Index</a><a class="separator my-0"><hr></a><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a><a class="separator my-0"><hr></a><a href="about.html">About</a></div></div></header><div class="page-content"><div><h1 class="banner">About</h1><hr class="banner"/></div><div class="indexed-page nodisplay">About</div><div class="indexed-section nodisplay">the-program]=[</div><section id="the-program"><h1 class="highlight">The Program</h1><article><p><div>FFHacksterEx is an extension of the original FFHackster app.</div><div>Written in Visual Studio with C++ (and still using MFC &#x1F61E;).</div></p><p><div> First written with Visual Studio 2015, it received a UI update (just as an 
+exercise in seeing how much I could get out of MFC).</div></p><p>It retains FFH features and core UI.The caption bars and menus are gone, the various windows can 
+be dragged anywhere (not just from the top) and various editing 
+dialogs got slightly bigger to accommodate the jump in 
+typical screen sizes on laptops and desktops.</p><p>A project system is used to allow working on multiple projects at once. The workaround for FFH was to manually create multiple 
+folders and place the FFH executable and DAT file in each folder.</p></article></section><hr><div class="indexed-section nodisplay">special-thanks]=[</div><section id="special-thanks"><h1 class="highlight">Special Thanks</h1><article><h2 class="thankyouname">Disch</h2><div class="clearfix"><img class="lfloat mr-2" width="64" height="64" src="assets/ffhacksterex/img/disch.png"><p>Disch wrote <span class="bold underline largertext">FFHackster</span> some time ago, and it was the go-to tool for a generation of FF1 ROM hackers.
+I didn't code FFHacksterEx with the idea of replacing it; in fact, it uses the FFH source and leaves
+its editors generally intact.
+I changed the UI a bit and added some new features, but the core of FFHEx is FFH.</p></div><p><a href="http://www.romhacking.net/utilities/163/">FFHackster on RHDN</a></p><p>Special Thanks to Disch for writing FFH and giving so many ROM hackers a great toolkit!</p></article><article><h2 class="thankyouname">Paulygon</h2><p><span class="bold underline largertext">FFHackster Companion</span> (aka FFHackster Plus) provided some additional features to complement
+FFH. The one feature that stood out to me the most was the dialogue editor. It allowed
+ROM hackers to set the handler and the parameters for each sprite.</p><p><a href="http://www.romhacking.net/utilities/257/">FFHackster Companion on RHDN <br/></a><a href="https://web.archive.org/web/20120628133356/http://home.earthlink.net/~paul3/ff1.html">Archive of Paulygon's old site</a></p><p>That served as the inspiration for the Sprite Dialogue editor, which can set the events
+and parameters for each sprite. Thank you Paulygon!</p></article></section><hr><div class="indexed-section nodisplay">how-it-began]=[How It All Began</div><section id="how-it-began"><h1 class="highlight">How it all began</h1><article><p>I wrote a small assembly hack, and things were fine until I decided to move
+some things around in the ROM. I changed the equipment and some text strings using FFHackster,
+and all of a sudden the ROM would either become buggy or unplayable.
+Once in a while FFHackster would crash while saving. I quickly realized
+that without a way to update the offsets FFH used, it wouldn't be able to
+edit ROMs that moved bytes around.</p><p>I wrote a small collection of tools in 2016 late to edit parts of
+the ROM after modifications were made, but it was pretty tedious to do that
+without FFH's convenient UI. After a month of frustration I faced a choice:
+quit, find a tool with an expanded UI, or (gulp) <span class="italic">build one myself.</span></p><p>After a bit of searching, I found the source to FFH, and realized that
+the latter option wouldn't be practical due to time constraints.</p><p>I wrote a couple of assembly hacks, and managing them quickly became a hassle. That's when I decided
+to extend the app to use configurable offsets. I also developed the Party Setup and Starting Items
+editors while working on those hacks, and back-ported them into FFHEx.</p><p>However, the new features for the hacks also broke the standard editors. Writing replacements
+wasn't too hard, but I didn't want separate versions of the FFHEx executable for each
+hack. I decided to implement extensions using DLLs, and the editor extension interface was born.
+Doing that using C/C++ proved to be challenging...</p><p><div>Editing sprite dialogue events was easy with FFhackster Plus, but no tool existed for assembly projects.
+I found no source code for FFH Plus, but once I got tired of hand-editing everything, I wrote
+the Sprite Dialogue editor to ease changing sprite dialogue and events.</div><div class="mt-1">While <span class="experimental">experimental</span> (i.e. hacky), it has worked for me.</div></p></article></section></div><footer class="border-white"><a class="row automargin backtotop" href="about.html#top">Back to top</a><div class="py-2 mb-0"><div class="row automargin madeby"><h1 class="my-1">FFHacksterEX</h1></div><div class="row automargin"><span class="font-xl"><span class="px-1">v0.9.8.2</span></span></div><div class="row automargin"><span>Site Copyright (C) 2025 Esselle Jaye</span></div><div class="automargin mt-1 mb-0"><ul class="social-footer font-md"><li><a href="mailto:ffhacksterex@gmail.com">Email</a></li><li><a href="https://www.youtube.com/channel/UCXu9vrNQOYzvzebgxkpOckA">YouTube</a></li></ul></div></div><div class="back-black py-2 mb-0"><div class="row automargin ddfnt font-md"><a href="https://digitaldreamers.org/"><h1 class="my-0">DIGITAL DREAMERS</h1></a></div><div class="row automargin"><span class="font-md"><span>Copyright 2025 </span><span>Esselle Jaye</span></span></div></div></footer></body></html>

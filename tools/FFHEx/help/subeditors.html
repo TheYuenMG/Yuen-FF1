@@ -1,0 +1,122 @@
+<!DOCTYPE html><html><head><link rel="icon" type="image/x-icon" href="assets/ffhacksterex/ico/ffhacksterex.ico"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/ffhacksterex.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/icons.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/images.css"><style>html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 64px 1fr auto;
+}
+
+footer.sticky {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}</style><script>let FIX_FOUC_FOR_FIREFOX;</script></head><body><header class="nav" id="menuMainNav"><a class="home" href="index.html">FFHacksterEx Help</a><span class="nodisplay">&nbsp;</span><div class="menu"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><div class="dropdown"><a><span>Getting Started</span></a><div class="dropdown-submenu"><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><a class="separator my-0"><hr></a><a href="site-index.html">Site Index</a></div></div><div class="dropdown"><a><span>Features</span></a><div class="dropdown-submenu"><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a></div></div></div><a class="about-item right" href="about.html">About</a><div class="ff-thinmenu"><a class="menu row ff-thinmenu">Menu</a><div class="ff-sidenav"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><!-- Separators are skipped in the sidenav menu--><a href="site-index.html">Site Index</a><a class="separator my-0"><hr></a><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a><a class="separator my-0"><hr></a><a href="about.html">About</a></div></div></header><div class="page-content"><div class="indexed-page nodisplay">Subeditors</div><div><h1 class="banner">Subeditors</h1><hr class="banner"/></div><div class="indexed-section nodisplay">backdrop-subeditor]=[</div><section id="backdrop-subeditor"><h1 class="highlight">Battle Backdrops</h1>
+<img class="paddedimage" src="assets/ffhacksterex/img/backdrop-subeditor.jpg" />
+<p>Edit the tiles for the selected battle backdrop.<br />
+The tiles can be exported as a bitmap, and modified bitmaps can be
+subsequently imported; this allows you to use an external image editor
+to modify the tile image.<br />
+Take care tto respect the expectation that this bitmap should be either 16 color (4-bit)
+or 256 colors (8-bit).</p>
+<p>The battle backdrop is tied to the overworld tile that sends you into
+a standard map. In the Overworld Editor, when you click a source tile,
+the backdrop for that tile appears in the Battle Backdrop area.</p></section><hr><div class="indexed-section nodisplay">battle-palettes]=[</div><section id="battle-palettes"><h1 class="highlight">Battle Palettes</h1>
+<img class="paddedimage" src="assets/ffhacksterex/img/battlepalette-subeditor.jpg" />
+<p>Select the palettes used for the currently selected battke.<br />
+Simply click the palette you want to use and press OK to apply it
+to the battle.</p>
+<p>Remember that the enemy graphics are grouped into pattern tables
+(essentially groups of tiles), and palettes are applied to those
+tables. For that reason, palettes are specified for battles
+instead of individual enemies.</p></section><hr><div class="indexed-section nodisplay">battle-pattern-tables]=[</div><section id="battle-pattern-tables"><h1 class="highlight">Battle Pattern Tables</h1>
+<img class="paddedimage" src="assets/ffhacksterex/img/battle-patterntable-subeditor.jpg" />
+<p>Edit the pattern table that comprise a set of enemies.<br />
+Pattern tables contain 4 enemies, two large on the top row and two small on the bottom row.
+The pattern table itself is (in essence) a run of tiles that can be arranged to form images.</p>
+<p>FFH introduced this editor, which arranges the relevant table's tiles into an editable image.<br />
+Also, you can export the pattern table to a bitmap, edit that with an external editor,
+and import the result.<br />
+Take care tto respect the expectation that this bitmap should be either 16 color (4-bit)
+or 256 colors (8-bit).</p></section><hr><div class="indexed-section nodisplay">battle-sprites]=[</div><section id="battle-sprites"><h1 class="highlight">Battle Sprites</h1>
+<img class="paddedimage" src="assets/ffhacksterex/img/battlechar-subeditor.jpg" />
+<p>Edit the frames and palette used for the character battle.<br />
+The tiles can be exported to a bitmap and imported after external editing.</p>
+<p>Note that palettes 3 (Varies) and 4 (Cursor) are unstable palettes and are
+not typically used for battle sprites.</p></section><hr><div class="indexed-section nodisplay">coords]=[Teleport Coordinates</div><section id="coords"><h1 class="highlight">Coords</h1>
+<div class="leftrow">
+<img class="paddedimage" src="assets/ffhacksterex/img/coords-subeditor.jpg" width="351" height="308" />
+<img class="paddedimage" src="assets/ffhacksterex/img/coords-subeditor-exit.jpg" width="351" height="308" />
+</div>
+<p>Coords is a subeditor for the game's teleport-to-coordinates feature.<br />
+Stepping on teleport or warp tiles (e.g. staircases and exits) will send the party to a specific
+position called a Coord. This can be on a standard map or the overworld map.</p>
+<div class="digest">
+<table class="digest">
+<tr><th>Field</th><th>Detail</th></tr>
+<tr><td>Coord</td><td>The user-definable label for the selected coord.</td></tr>
+<tr><td>Destination</td><td>Specifies the X pos, Y pos, and (if applicable) the standard map.</td></tr>
+<tr><td><< Back</td><td>If this dialog was invoked from another coord/teleport, go back to that coord.</td></tr>
+<tr><td>Fwd >></td><td>If we came back here from another coord/teleport, go to the next coord.</td></tr>
+<tr><td>Followup</td><td>Follow the coord/teleport to its target map and scroll the target position into view.</td></tr><tr><td>Set with next click<td><div>When checked, the next left-click on the map will set the X and Y positions.</div><div>Once that click happens, the check box clears automatically.</div></td></td></tr></table>
+</div><p>When clicked, the Back, Followup, and Fwd buttons will take you to the 
+specified target position, switching maps if necessary. In the original 
+game there are three types of teleports: </p><ul><li>Outside to Inside (ON) moves the party from the Overworld to a Standard map.</li><li>Inside to Inside (NN) moves the party between two Standard maps.</li><li>Inside to Outside (NO) moves the party from a Standard map to the Overworld.</li></ul><p>ON coords are prefixed with "Enter", while NO coords are prefixed with "Exit".</p><div class="inlineb"><div class="inlineb"><img class="paddedimage" src="assets/ffhacksterex/img/coords-enter-list.jpg"></div><div class="inlineb"><img class="paddedimage inlineb" src="assets/ffhacksterex/img/coords-exit-list.jpg"></div></div></section><hr><div class="indexed-section nodisplay">custom-map-tools]=[</div><section id="custom-map-tools"><h1 class="highlight">Customizable Map Tools</h1>
+<h3 class="largertext">Overworld</h3>
+<img class="paddedimage" src="assets/ffhacksterex/img/map-tool-palette-overworld.jpg" />
+<ul class="naked">
+<li>The Pencil icon draws the selected source tile at the selected map tile.</li>
+<li>The Rectangle icon fills the rectangle you draw with the selected source tile.</li>
+<li>The Tree icon autofills the rectangle you draw with a pattern - by default, trees.</li>
+<li>The Water icon autofills the rectangle you draw with a pattern - by default, ocean water.</li>
+<li>The Mountain icon autofills the rectangle you draw with a pattern - by default, mountains.</li>
+</ul>
+<h3 class="largertext">Standard Maps</h3>
+<img class="paddedimage" src="assets/ffhacksterex/img/map-tool-palette-stdmaps.jpg" />
+<ul class="naked">
+<li>The Pencil icon draws the selected source tile at the selected map tile.</li>
+<li>The Rectangle icon fills the rectangle you draw with the selected source tile.</li>
+<li>The Double Rectangle icon autofills the rectangle you draw with a pattern - by default, large window houses.</li>
+<li>The Mountain icon autofills the rectangle you draw with a pattern - by default, small window houses.</li>
+</ul>
+<h3 class="largertext">Customize Tool Window and Autofill</h3>
+<img class="paddedimage" src="assets/ffhacksterex/img/customize-tool-window.jpg" />
+<p>Autofill rectangles use the pattern defined by the Customize Tool window. Select a tool that supports
+autofill and click the Customize Tool button to access the window.<br />
+The pattern consists of three rows of three tiles, used as follows:</p>
+<div class="digest">
+<table class="digest">
+<tr><td class="rowlabel">Top row</td><td>Top left corner</td><td>Interior top row tiles</td><td>Top right corner</td></tr>
+<tr><td class="rowlabel">Interior rows</td><td>Left tile</td><td>Interior inner row tiles</td><td>Right tile</td></tr>
+<tr><td class="rowlabel">Bottom row</td><td>Bottom left corner</td><td>Interior bottom row tiles</td><td>Bottom right corner</td></tr>
+</table>
+</div>
+<p>This tool will save you a lot of time when you need to draw a large swath of tiles.
+Since the pattern defines edge and corner tiles, you don't have to go back to set them manually;
+the tool does it for you.</p><p>Another time saver is the fact that the Customized tools handle overlapped drawing of the same
+type of tool. For example, if you draw a rectangle to define a range of mountains, you can draw
+another rectangle of the same type that overlaps it, and the tool will handle the edge tiles for you.</p><img class="paddedimage" src="assets/ffhacksterex/img/custom-tool-overlap.jpg" width="324" height="400"><p><div>Notice how the two rectangles drawn with the Mountain custom tool automatically use edge tiles at the corners where they intersect.        </div><div>Also note that while the tools default to certain tiles (e.g. grass, ocean, mountain, building), you can use the Customize Tool window to change them as you see fit.</div></p></p></section><hr><div class="indexed-section nodisplay">map-sprites]=[</div><section id="map-sprites"><h1 class="highlight">Map Sprites</h1>
+<img class="paddedimage" src="assets/ffhacksterex/img/mapman-subeditor.jpg" />
+<p>Edit the frames and palette used for the character battle.<br />
+The tiles can be exported to a bitmap and imported after external editing.</p>
+<p>The palette is presented as two rows of 3 colors, used as follows:<div class="digest">
+<table class="digest">
+<tr><td>Top half</td><td>Shared Border</td><td>Unique Hair/Hat</td><td>Shared Skin Tone</td></tr>
+<tr><td>Bottom half</td><td>Shared Border</td><td>Unique Clothes Color</td><td>Shared Skin Tone</td></tr>
+</table>
+</div>Double-click a color in the Palette area to edit that color.<br />
+Be careful: the shared colors are used for <span class="bold">ALL</span> classes.</p></section><hr><div class="indexed-section nodisplay">minimap]=[</div><section id="minimap"><h1 class="highlight">MiniMap</h1>
+<img class="paddedimage" src="assets/ffhacksterex/img/minimap.jpg" width="259" height="284"/><p><div>Click on the minimap to go to that position in the map view. This saves time
+on scrolling.</div></p><p><div>The title bar shows the mouse pointer's world grid position (X = column, Y = row) on the map:</div><ul class="mt-0"><li>The map is composed of tiles that are 16 x 16 pixels.</li><li>Each point represents a tile area of 16 columns x 16 rows.</li><li>There are 256 columns and 256 rows on the world map.</li><li>The world map is 4096 x 4096 pixels in size.</li></ul></p></section><hr><div class="indexed-section nodisplay">nes-palette]=[NES Palettes</div><section id="nes-palette"><h1 class="highlight">NES Palette</h1>
+<img class="paddedimage" src="assets/ffhacksterex/img/palette-subeditor.jpg" />
+<p>Click a color to select it.</p></section><hr><div class="indexed-section nodisplay">tiles]=[</div><section id="tiles"><h1 class="highlight">Tiles</h1><img class="paddedimage" src="assets/ffhacksterex/img/tile-subeditor.jpg"><p> <div>This editor is invoked when double left clicking a tile set cell on either the Overworld or Standard maps.</div><div>When invoked, the selected tile will appear, and the source pattern table definig the map will appear on the right.</div></p><p><div>Tiles are made up of four subtiles portions from the Pattern Table used by the current tile set.</div><div>There are two operations possible on this screen:</div><ul> <li>Change the portions of the pattern table used in the selected tile<p><div>Use the Tile pane to select a portion of the tile to replace.</div><div>Select a different tile in the Pattern Table pane.</div><div>The new portion will replace the previous one.</div></p></li><li>Edit the pixels of the selected portions of the patterns table<p> <div>Use the Tile pane to select a portion of the tile to edit; it will appear in the Closeup pane.</div><div>Select a color from the Palette area.</div><div class="mt-1">Then, left click a pixel in the Closeup to set it to the selected color.</div><div>Right click a pixel to set it to the background color (black).</div></p></li></ul></p></section><hr><div class="indexed-section nodisplay">tint]=[</div><section id="tint"><h1 class="highlight">Tint</h1>
+<img class="paddedimage" src="assets/ffhacksterex/img/tint-subeditor.jpg" /><p><div>Select a color value radio button, and a tile in the tile editing area will show with that color.</div><div>The +/- signs in parentheses are an internal detail denoting the bit pattern used for each value.</div><div>The Tint Variant determines the strength of the tint, 0 being transparent, 255 being full strength::</div></p><img class="paddedimage" src="assets/ffhacksterex/img/tint-variant.jpg"></section><hr><div class="indexed-section nodisplay">wepmag-graphic]=[Weapon and Magic Graphics</div><section id="wepmag-graphic"><h1 class="highlight">Weapon and Magic Graphics</h1>
+<img class="paddedimage" src="assets/ffhacksterex/img/wepmagic-subeditor.jpg" />
+<p>
+<ul class="naked">
+<li>Click a color in the palette to make it the active color.</li>
+<li>Left click a pixel in the Close Up view to set it to the current color.</li>
+<li>Right click a pixel in the Close Up view to reset it to the background color.</li>
+<li>Use the Bitmap menu to export and import images.</li>
+</ul>
+</p></section></div><footer class="border-white"><a class="row automargin backtotop" href="subeditors.html#top">Back to top</a><div class="py-2 mb-0"><div class="row automargin madeby"><h1 class="my-1">FFHacksterEX</h1></div><div class="row automargin"><span class="font-xl"><span class="px-1">v0.9.8.2</span></span></div><div class="row automargin"><span>Site Copyright (C) 2025 Esselle Jaye</span></div><div class="automargin mt-1 mb-0"><ul class="social-footer font-md"><li><a href="mailto:ffhacksterex@gmail.com">Email</a></li><li><a href="https://www.youtube.com/channel/UCXu9vrNQOYzvzebgxkpOckA">YouTube</a></li></ul></div></div><div class="back-black py-2 mb-0"><div class="row automargin ddfnt font-md"><a href="https://digitaldreamers.org/"><h1 class="my-0">DIGITAL DREAMERS</h1></a></div><div class="row automargin"><span class="font-md"><span>Copyright 2025 </span><span>Esselle Jaye</span></span></div></div></footer></body></html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head><link rel="icon" type="image/x-icon" href="assets/ffhacksterex/ico/ffhacksterex.ico"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/ffhacksterex.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/icons.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/images.css"><style>html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 64px 1fr auto;
+}
+
+footer.sticky {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}</style><script>let FIX_FOUC_FOR_FIREFOX;</script></head><body><header class="nav" id="menuMainNav"><a class="home" href="index.html">FFHacksterEx Help</a><span class="nodisplay">&nbsp;</span><div class="menu"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><div class="dropdown"><a><span>Getting Started</span></a><div class="dropdown-submenu"><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><a class="separator my-0"><hr></a><a href="site-index.html">Site Index</a></div></div><div class="dropdown"><a><span>Features</span></a><div class="dropdown-submenu"><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a></div></div></div><a class="about-item right" href="about.html">About</a><div class="ff-thinmenu"><a class="menu row ff-thinmenu">Menu</a><div class="ff-sidenav"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><!-- Separators are skipped in the sidenav menu--><a href="site-index.html">Site Index</a><a class="separator my-0"><hr></a><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a><a class="separator my-0"><hr></a><a href="about.html">About</a></div></div></header><div class="page-content"><div class="indexed-page nodisplay">Main Window</div><div><h1 class="banner">Main</h1><hr class="banner"/></div><section><p><div>The main windows contains icons representing common maintenance functions and buttons representing available editors.</div><div>A tray of icons provides access to app settings and help.</div><div>Hovering over the editors will display a status tip at the bottom of the screen, briefly describing the editor.</div></p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/main-window.jpg" width="800" height="527"></section><div class="indexed-section nodisplay">icon-tray]=[</div><section id="icon-tray"><h1 class="highlight">Icon Tray</h1><div class="digest"><table class="digest"><tr><td class="iconic appsettings img48"></td><td>The gear icon accesses application wide settings.<div>See <a href="settings.html#app-settings">App Settings</a> for more information.</div></td></tr><tr><td class="iconic helpbook img48"></td><td>The book icon accesses help (if available).<div>F1 invokes help for the page, Shift+F1 for the focused control if available.</div></td></tr><tr><td class="iconic about img48"></td><td>The question icon opens the About window.</td></tr></table></div></section><hr><div class="indexed-section nodisplay">import-dat]=[Import FFHackster DAT</div><section id="import-dat"><h1 class="highlight">Bring in Hackster's DAT settings</h1><table class="noborder"><tr><td class="iconic img48 importsettings"></td><td><div>Allows importing of content from an FFHackster DAT file.</div><div>Also allows importing labels, values, and dialogue INI from another project.</div></td></tr></table><img class="paddedimage" src="assets/ffhacksterex/img/import-settings.jpg"><p><span class="accent">NOTE:</span> Content imported from another project will overwrite content drawn from the 
+DAT file.</p></section><hr><div class="indexed-section nodisplay">revert-archive-clone]=[Revert, Archive, and Clone</div><section id="revert-archive-clone"><h1 class="highlight">Revert, Archive, and Clone</h1><table class="noborder"><tr><td class="iconic revert img48"></td><td><div><span class="accent">Overwrite</span> the working file(s) with the clean copy/reversion file.</div><div>For assembly projects, it will replace the contents of the asm folder with the clean copy files.</div></td></tr><tr><td class="iconic archive img48"></td><td><div><span class="accent">Archive</span> the project to an archive file (a ZIP file with extension .ff1zip).</div><div>Presents a dialog allowing the selection of a filename for the archive.</div></td></tr><tr><td></td><td><img class="paddedimage" src="assets/ffhacksterex/img/main-archive-prompt.jpg" width="699" height="274"></td></tr><tr><td class="iconic clone img48"></td><td><div><span class="accent">Clone</span> the current project to a new folder.</div><div>Select a parent folder, then specify a name for the new cloned project that will be created there.</div></td></tr><tr><td></td><td><div class="mt-1">For example:<ol class="mt-0"><li>Select parent folder C:\PROJ\FF1\WIP\_clones</li><li>Specify the name NewClonedProject for the new project</li><li>Clicking OK generated the folder path C:\PROJ\FF1\WIP\_clones\NewClonedProject</li><li>If that folder is empty or nonexistent, then the project is cloned to that path<div>All files from the original project are copied to this folder.</div><div>All files then have their names and references changed to reflect the new folder.</div></li></ol></div><img class="paddedimage" src="assets/ffhacksterex/img/main-clone-prompt.jpg" width="699" height="352"></td></tr></table></section><hr><div class="indexed-section nodisplay">publish-compile-run]=[Publish, Compile, and Run</div><section id="publish-compile-run"><h1 class="highlight">Publish, Compile, and Run</h1>
+<div class="digest">
+<table class="digest"><tr><td class="iconic img48 publish"></td><td>Copies the working ROM to the publish path.</td></tr><tr><td class="iconic img48 compile"></td><td><div class="accent">Assembly Projects Only</div><div>Compile the assembly source, which updates the working ROM.</div></td></tr><tr><td class="iconic img48 run"></td><td>Runs the working ROM with the program specified in App Settings.</td></tr></table>
+</div>
+<p><div>NOTE: the App Setting "Compile before Run" is on by default. if turned off, then you <span class="largertext bold underline">MUST</span> compile an assembly project before running it
+to see the updated changes in the game.</div><div>The compilation produces the working NES ROM image that's used with the Run button. When you click Run, the working image is run by the EXE specified in App Settings. If you forget to compile it after making assembly changes,
+then you'll run the old copy of the working ROM.</div></p></section><hr><div class="indexed-section nodisplay">edit-labels]=[Edit Editor Labels</div><section id="edit-labels"><h1 class="highlight">Edit Labels</h1>
+<table class="noborder"><tr><td class="iconic strings img48"></td><td>Edit the labels used throughout the editor.<br />
+The count variable associated with each group of labels is shown above the list of strings.</td></tr></table><p>Press CTRL + Numpad Plus Sign (+) to autosize the columns; (each column resizes to fit to its content.</p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/main-label-subeditor.jpg" width="800" height="400"></section><hr><div class="indexed-section nodisplay">edit-values]=[Edit ROM Values</div><section id="edit-values"><h1 class="highlight">Edit ROM Values</h1>
+<table class="noborder">
+<tr>
+<td class="iconic img48 values"></td>
+<td>Edit the values used in the game and associated tools.<br />
+Add, Remove, or Revert the values in a given group.<br />
+Revert will attempt to roll back to a clean copy of the values (from when
+the project was created) - be careful when using this.</td>
+</tr>
+</table><p>Press CTRL + Numpad Plus Sign (+) to autosize the columns; each column resizes to fit to its content.</p><p><div>Items in <span style="color:blue;">blue</span> are reserved and cannot be deleted.</div><div>Hidden items are shown in <span style="color:orange;">orange</span>.</div></p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/main-rom-values-hidden.jpg" width="800" height="400"><div class="digest"><table class="digest"><thead><tr><th>Button</th><th>Action</th></tr></thead><tbody><tr><td><span class="accent">Show Hidden Items </span></td><td>Check the box to show hidden items in this group (if any).<div>Items are sometimes hidden by extensions to avoid 
+destroying original values when overriding editors.</div><div>This allows you to see any such values here instead of 
+having to crawl through the values file manually.</div></td></tr><tr><td><span class="accent"> [ + ]</span></td><td>Adds a value to the current group.<div>Invokes a dialog to collect the name and type of the new value.</div><img class="mt-1 paddingimage" src="assets/ffhacksterex/img/main-rom-values-add-entry.jpg"></td></tr><tr><td><span class="accent"> [ - ]</span></td><td>Removes the selected value.</td></tr><tr><td><span class="accent"> Revert</span></td><td><div>Attempts to restore the values to their initial settings at project creation time.</div><div class="mt-1">Typically used if values have been trashed and you want a fresh start without recreating the entire project.</div></td></tr></tbody></table></div><p class="mb-0"><div>Values can have one of the types in the table below.</div><div>Some of the values work out to be the same type of data, but have different semantic meanings that can be used by the editor.</div><div>e.g. byte and uint8 are both unsigned 8-bit integers, but the editor  or an extension can treat the two differently (e.g. use uint8
+ strictly as an integer and not as bit flags).</div><div class="accent">Not much of this has been thoroughly used, so results may vary, and there may be some changes here in the future.</div></p><div class="digest"><table class="digest"><thead><tr><th>Type</th><th>Detail</th></tr></thead><tbody><tr><td>byte</td><td>An 8-bit hex value.</td></tr>
+<tr><td>word</td><td>A 16-bit hex value.</td></tr>
+<tr><td>bword</td><td>A 24-bit hex value (byte + word).</td></tr>
+<tr><td>dword</td><td>A 32-bit hex value.</td></tr><tr><td>addr</td><td>A 16-bit hex value, used for RAM addresses.<div>Formatted as $12AB.</div></td></tr><tr><td>rgb</td><td>A 24-bit hex value that encodes red, green, and blue.<div>Invokes the Color editor.</div></td></tr><tr><td>str</td><td>A string, used in the values and labels files.</td></tr>
+<tr><td>bool</td><td>A boolean value, true or false.</td></tr><tr><td>str[]</td><td>Array of strings, used in the project and values files.<div>Invokes the array editor.</div></td></tr><tr><td>bool[]</td><td>Array of booleans (true/false), used in the project and values files.<div>Invokes the array editor.</div></td></tr><tr><td>byte[]</td><td>Array of hex bytes, used in the project file.<div>Invokes the array editor.</div></td></tr><tr><td>intN</td><td>A signed 8, 16, 24, or 32-bit integer.</td></tr>
+<tr><td>uintN</td><td>An unsigned 8, 16, 24, or 32-bit integer.</td></tr><tr><td>hexN</td><td>An unsigned 8, 16, 24, or 32-bit integer.<div>Formatted as hexadecimal 0x12AB.</div></td></tr></tbody></table></div></section><hr><div class="indexed-section nodisplay">edit-ram]=[Edit RAM Values</div><section id="edit-ram"><h1 class="highlight">Edit RAM Values</h1>
+<table class="noborder">
+<tr>
+<td class="iconic img48 ramvalues"></td>
+<td>Edit the RAM values used in the game.<br />
+Add, Remove, or Revert the values.<br />
+Revert will attempt to roll back to a clean copy of the values (from when
+the project was created) - be careful when using this.</td>
+</tr>
+</table><p>Press CTRL + Numpad Plus Sign (+) to autosize the columns; (each column resizes to fit to its content.</p><p>Items in blue are reserved and cannot be deleted.</p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/main-ram-values-subeditor.jpg" width="800" height="400"></section><hr><div class="indexed-section nodisplay">project-settings]=[</div><section id="project-settings"><h1 class="highlight">Project Settings</h1>
+<table class="noborder">
+<tr>
+<td class="iconic img48 projectsettings"></td>
+<td>See <a href="settings.html#project-settings">Project Settings</a> for more info.</td>
+</tr>
+</table></section><hr><div class="indexed-section nodisplay">manage-editors]=[</div><section id="manage-editors"><h1 class="highlight">Manage Editors</h1>
+<table class="noborder"><tr><td class="iconic editors img48"></td><td>Manages the order and source of editors.<br/>
+Extensions can add custom editors, as well as override or hide existing ones.            </td></tr></table><img class="paddedimage scaledown" src="assets/ffhacksterex/img/main-editors-window.jpg" width="800" height="428"><div class="digest">
+<table class="digest">
+<tr>
+<th>Type</th>
+<th>Detail</th>
+</tr>
+<tr><td>Editor</td><td>The internal name of the editor.</td></tr>
+<tr><td>Status</td><td>The action the editor's selected source will take.<br />An editor can be shown or hidden.</td></tr>
+<tr><td>Displayname</td><td>The name displayed on the main window for editor's selected source.</td></tr>
+<tr>
+<td>Level</td>
+<td>The level (or context) where the editor's selected source is found.<br /><span class="bold">Built-In</span> editors are the standard editors inherited from FFH.<br />
+<span class="bold">Custom</span> editors are loaded from DLLs.<br />
+<span class="bold">Missing</span> editors have a filepath, but the file isn't found there.<br />
+<span class="bold">Excluded</span> editors are intentionally hidden/disabled.<br />
+<span class="bold">App</span> editors are in the program folder.<br />
+<span class="bold">ProjExtFolder</span> editors are in the project's Additional Modules folder.<br />
+<span class="bold">Project</span> editors are in the project folder.<br />
+</td>
+</tr>
+<tr><td>Source</td><td>The name of the editor's selected source.</td></tr>
+<tr><td>Folder</td>
+<td>The path of the editor's selected source.<br /><span class="bold">*builtin</span> for the standard built-in editors.<br />
+<span class="bold">*excluded</span> for hidden/removed editors.
+</td>
+</tr>
+<tr>
+<td>
+<img class="thickbordered" src="assets/ffhacksterex/ico/iconmonstr-arrow-65-24.png" />
+<img class="thickbordered" src="assets/ffhacksterex/ico/iconmonstr-arrow-66-24.png" />
+</td>
+<td>Move the selected editor up or down, which changes its position in the main window accordingly.</td>
+</tr>
+</table>
+</div><p>For more info on extensions, see <a href="extensions.html">Extensions</a>.</p></section></div><footer class="border-white"><a class="row automargin backtotop" href="mainwindow.html#top">Back to top</a><div class="py-2 mb-0"><div class="row automargin madeby"><h1 class="my-1">FFHacksterEX</h1></div><div class="row automargin"><span class="font-xl"><span class="px-1">v0.9.8.2</span></span></div><div class="row automargin"><span>Site Copyright (C) 2025 Esselle Jaye</span></div><div class="automargin mt-1 mb-0"><ul class="social-footer font-md"><li><a href="mailto:ffhacksterex@gmail.com">Email</a></li><li><a href="https://www.youtube.com/channel/UCXu9vrNQOYzvzebgxkpOckA">YouTube</a></li></ul></div></div><div class="back-black py-2 mb-0"><div class="row automargin ddfnt font-md"><a href="https://digitaldreamers.org/"><h1 class="my-0">DIGITAL DREAMERS</h1></a></div><div class="row automargin"><span class="font-md"><span>Copyright 2025 </span><span>Esselle Jaye</span></span></div></div></footer></body></html>

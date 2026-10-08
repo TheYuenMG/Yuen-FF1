@@ -1,0 +1,108 @@
+<!DOCTYPE html><html><head><link rel="icon" type="image/x-icon" href="assets/ffhacksterex/ico/ffhacksterex.ico"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/ffhacksterex.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/icons.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/images.css"><style>html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 64px 1fr auto;
+}
+
+footer.sticky {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}</style><script>let FIX_FOUC_FOR_FIREFOX;</script></head><body><header class="nav" id="menuMainNav"><a class="home" href="index.html">FFHacksterEx Help</a><span class="nodisplay">&nbsp;</span><div class="menu"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><div class="dropdown"><a><span>Getting Started</span></a><div class="dropdown-submenu"><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><a class="separator my-0"><hr></a><a href="site-index.html">Site Index</a></div></div><div class="dropdown"><a><span>Features</span></a><div class="dropdown-submenu"><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a></div></div></div><a class="about-item right" href="about.html">About</a><div class="ff-thinmenu"><a class="menu row ff-thinmenu">Menu</a><div class="ff-sidenav"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><!-- Separators are skipped in the sidenav menu--><a href="site-index.html">Site Index</a><a class="separator my-0"><hr></a><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a><a class="separator my-0"><hr></a><a href="about.html">About</a></div></div></header><div class="page-content"><div class="indexed-page nodisplay">Setup and Start</div><div><h1 class="banner">Setup and Start</h1><hr class="banner"/></div><div class="indexed-section nodisplay">setup]=[</div><section id="setup"><article><h1 class="highlight">Setup</h1><h3>The App</h3><ul class="naked"><li>Go to the Releases page.</li><li>Download the app zip package (x86 or x64)</li><li>Create a folder for FFHEx, then unzip the package contents into that folder.</li><li class="ml-2"><span class="accent italic font-lg">NOTE:</span><span class="accent"> ensure that the folder you create is in a <span class="underline">writable</span> folder!</span></li><li>Since the app doesn't ship with app settings, unzipping into an existing folder will overwrite the app files while leaving the 
+app settings intact.</li></ul><h3 id="local-help">Local Help</h3><div>If you want help documentation, then do the following:</div><ul class="naked mt-0"><li>- Go to the Releases page.</li><li>- Download the help zip package.</li><li>- Unzip the help package into the FFHEx folder you created above for the app.</li></ul><p>Here's an example using version 0.9.7:</p><ul class="naked"><li>- Download the app and help zip files.<div class="ml-3"><img class="paddedimage scaledown" src="assets/ffhacksterex/img/setup-download-files.jpg" width="800" height="439"></div></li><li>- Create a folder, then extract the contents of the app zip into it.<div class="ml-3">In this case, 7-zip can do it in one step with the <span class="accent">Extract to &lt;foldername&gt;</span> command.</div><div class="ml-3">For this example, the folder is now named <samp>ffhacksterex-0.9.7-win64-x64-v140_xp</samp></div><div class="ml-3"><img class="paddedimage scaledown" src="assets/ffhacksterex/img/setup-extract-to-folder.jpg" width="800" height="340"></div></li><li>- Extract the <span class="italic">contents</span> of the help zip file into the <samp>ffhacksterex-0.9.7-win64-x64-v140_xp</samp><span> folder<div class="ml-3">The app folder should now contain a <samp>help</samp> subfolder.</div><div class="ml-3"><img class="paddedimage scaledown" src="assets/ffhacksterex/img/setup-help-subfolder.jpg" width="800" height="440"></div></span></li><li>- Go into the folder, then run FFHacksterEx.exe.</li><li>- The "Welcome to FFHackster EX" dialog appears. press <kbd class="accent font-lg">F1.</kbd></li><li>- Hopefully, a browser window opens to the Main document in question.<div class="ml-3"><div>This typically opens a new tab in the default browser.</div><div>NOTE: currently, each help page will be invoked in a separate tab.</div></div></li></ul><p><div>Some dialog elements have <span class="italic">context-sensitive</span> help.</div><div>When such an element is highlighted, pressing <kbd class="accent font-lg">SHIFT + F1</kbd> will display the portion of the help page relevant to that element 
+(instead of display the page from the top).</div><div>If not, then it behaves exactly like <kbd class="accent font-lg">F1.</kbd></div></p></article></section><div class="indexed-section nodisplay">running-the-app]=[</div><section id="running-the-app"><h1 class="highlight">Running the app</h1><p><div>Open the folder where you unzipped the app zip package.</div><div>You should be able to double-click the executable to launch the app.
+You'll see the welcome window.</div></p><img class="paddedimage scaleslim" src="assets/ffhacksterex/img/welcome.jpg" width="485" height="351"><p>On the welcome window, you will notice the System Icons along the top right of the window.<br />
+There are five main action Icons that allow you to start new projects and resume existing ones.</p></section><hr><div class="indexed-section nodisplay">icon-tray]=[</div><section id="icon-tray"><h1 class="highlight">Icon Tray</h1><div class="digest"><table class="digest"><tr><td class="iconic appsettings img48"></td><td>The gear icon accesses application wide settings.<div>See <a href="settings.html#app-settings">App Settings</a> for more information.</div></td></tr><tr><td class="iconic helpbook img48"></td><td>The book icon accesses help (if available).<div>F1 invokes help for the page, Shift+F1 for the focused control if available.</div></td></tr><tr><td class="iconic about img48"></td><td>The question icon opens the About window.</td></tr></table></div></section><hr><div class="indexed-section nodisplay">editrom]=[Edit ROM</div><section id="editrom"><h1 class="highlight">Editing a ROM</h1><p>On the welcome screen, click the Edit ROM button.<br />Use the open file prompt to select a ROM file.<br/>
+You will then be shown the editor selection window. You can click OK to accept the defaults.<br />
+The project will then create, using a copy of the ROM you selected as the base image for the project.</p></p></section><hr><div class="indexed-section nodisplay">openproject]=[Open Project</div><section id="openproject"><h1 class="highlight">Opening a Project</h1><p>Click the Open Project button, and select a project.<br /><span class="bold"> NOTE: FFHEx attempts to support older project versions via an upgrade.<br/>If an upgrade fails, your only recourse will be to create a new project,
+then copy all of the files EXCEPT for the project file from the failing
+project folder to the new one.<br/>
+Project files come with the extensions "ff1rom" and "ff1asm".</span></p></p></section><hr><div class="indexed-section nodisplay">newrom]=[New ROM Project</div><section id="newrom"><h1 class="highlight">Creating a new ROM project</h1><p>Click the New ROM Project button; the New ROM Project window appears.</p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/new-rom-project.jpg" width="758" height="409"><div class="digest">
+<table class="digest">
+<tr>
+<th>Field</th>
+<th>Detail</th>
+</tr>
+<tr><td>Parent Folder</td><td>The project folder will be created inside of this folder.</td></tr>
+<tr><td>Project Name</td><td>The name to use for the project folder and the name of the project.</td></tr>
+<tr><td>Prototype ROM</td><td>A copy of this file will be used as the ROM for the project.<br />The selected file is NOT modified.</td></tr>
+<tr><td>Force creation of labels</td><td>If checked, new default labels are used instead of copying from the app templates.</td></tr>
+<tr><td>Import a DAT file</td><td>If checked, the specified DAT file's settings will be imported during creation.</td></tr>
+<tr><td>Additional Modules Folder</td><td>The app will also look for extensions in this folder.</td></tr>
+<tr><td>Publish to this filepath</td><td>The publish command will copy the working ROM to this filepath.</td></tr>
+</table>
+</div></section><hr><div class="indexed-section nodisplay">newasm]=[New Assembly Project</div><section id="newasm"><h1 class="highlight">Creating a new Assembly project</h1><p>Click the New Assembly Project button; the New ROM Project window appears.<br />The layout is similar to the ROM project window, with the exceptions highlighted in the table below.</p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/new-asm-project.jpg" width="758" height="481"><div class="digest">
+<table class="digest">
+<tr>
+<th>Field</th>
+<th>Detail</th>
+</tr>
+<tr><td>Parent Folder</td><td>The project folder will be created inside of this folder.</td></tr>
+<tr><td>Project Name</td><td>The name to use for the project folder and the name of the project.</td></tr>
+<tr class="">
+<td>Prototype assembly archive</td>
+<td> A copy of this ZIP file will be used as the source for the project.<br />The selected ZIP file is NOT modified.<br />The code is unzipped inside of the project folder, into a subfolder named "asm".</td>
+</tr>
+<tr class="">
+<td>Look in app folder for "ff1asm-disch.dll"</td>
+<td> Checked: attempt to use the default assembly DLL, "ff1asm-disch.dll" from the application/program folder.<br />Unchecked: specify the location of an assembly DLL.<br />
+Note that this option exists for implementors who want to provide an alternate assembly than the
+Annotated Disch assembly used by by default. For example, if a DLL is written to target
+Anomie's disassembly, then specify that DLL here.<br />
+<span class="bold">If you are using the Annotated Disch disassembly, then leave the box checked and ignore it.</span></td>
+</tr>
+<tr><td>Force creation of labels</td><td>If checked, new default labels are used instead of copying from the app templates.</td></tr>
+<tr><td>Import a DAT file</td><td>If checked, the specified DAT file's settings will be imported during creation.</td></tr>
+<tr><td>Additional Modules Folder</td><td>The app will also look extensions in this folder.</td></tr>
+<tr><td>Publish to this filepath</td><td>The publish command will copy the working ROM to this filepath.</td></tr>
+</table>
+</div></section><hr><div class="indexed-section nodisplay">unzipproject]=[Open Project Archive</div><section id="unzipproject"><h1 class="highlight">Project archives</h1><p>FFHEx can save a project to a ZIP archive with a custom extension.<br />These archives can then be restored at any time with the Unzip Project.<br />
+See <a href="mainwindow.html#revert-archive-clone">Revert, Archive, and Clone</a> for more information concerning archives.</p><p>Select an archive file, and you will be prompted to select an empty folder.</p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/archive-extract-openfile.jpg" width="800" height="476"><p>We'll create an empty folder into which the archive will be unpacked.</p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/archive-extract-pickemptyfolder.jpg" width="800" height="476"><p>A new project is unzipped into this folder; the project and its main files will be renamed to match the folder.</p><img class="paddedimage scaledown" src="assets/ffhacksterex/img/archive-extract-projectopened.jpg" width="800" height="527"></section><hr><div class="indexed-section nodisplay">appfiles]=[Application Files</div><section id="appfiles"><h1 class="highlight">Application Files</h1><p><div>FFHEx uses a set of files to store application settings and options.</div>These are located in the application folder and must not be moved or deleted.</p><div class="digest"><table class="digest"><!-- Digest for Application Files --><thead><tr><th>File Name</th><th>Usage</th></tr></thead><tbody><tr><td>7za.exe</td><td>7-zip standalone executable, used for project archives.</td></tr><tr><td>ff1asm-disch.dll</td><td><div>DLL used to provide experimental support for the FFHEX-annotated Disch Disassembly.</div>
+            </td></tr><tr><td>FFHacksterEx.exe</td><td>Main executable that runs the program.</td></tr><tr><td>FFHacksterEx.exe-trace.bat</td><td>Batch file that runs the main executable and logs its output to a file.</td></tr><tr><td>FFHacksterEx.appsettings</td><td>Stores application-wide settings.</td></tr><tr><td>FFHacksterEx.dialogue.template</td><td>Settings used when creating the dialogue file for new projects.</td></tr><tr><td>FFHacksterEx.dte.tbl.template</td><td>DTE table values used when creating new projects.</td></tr><tr><td>FFHacksterEx.std.tbl.template</td><td>Standard table values used when creating new projects.</td></tr><tr><td>FFHacksterEx.editorsettings.template</td><td>Initial editor settings for new projects.</td></tr><tr><td>FFHacksterEx.pal.template</td><td>Initial palette settings for new projects.</td></tr><tr><td>FFHacksterEx.strings.template</td><td>Initial settings for in-editor labels.</td></tr><tr><td>FFHacksterEx.values.template</td><td>Initial settings for configurable values used by the editor.</td></tr><tr><td>FFHacksterEx.helpconfig</td><td>Dialog box and control Mappings for F1 help.</td></tr></tbody></table></div></section><hr><div class="indexed-section nodisplay">projectfiles]=[Project Files</div><section id="projectfiles"><h1 class="highlight">Project Files</h1><p><div>FFHEx uses a set of files to define a project, which is everything needed to store settings for a specific hack. The settings store descriptive information about the project,
+settings for project options, per-editor settings, and per-project FFHackster UI preferences.</div><div>When a project is created, you'll see the file below. Each one will have the name of the project following by an extension (which could have multiple parts).</div></p><p>For example, if the project is named TestRom, then the files will have names starting with TestRom
+like TestRom.pal, TestRom.values, etc.</p><div class="digest"><table class="digest"><!-- Digest for Project Files --><thead><tr><th>File Name</th><th>Usage</th></tr></thead><tbody><tr><td>{ProjectName}.ff1rom</td><td><p><div class="accent">ROM Project only</div><div>The project file containing descriptive info about the project.</div></p></td></tr><tr><td>{ProjectName}.ff1asm</td><td><p><div class="accent">Assembly Project only</div><div>The project file containing descriptive info about the project.</div></p></td></tr><tr><td>{ProjectName}.dialogue</td><td>Settings used when creating the dialogue file for new projects.</td></tr><tr><td>{ProjectName}.dte.tbl</td><td>DTE table values used when creating new projects.</td></tr><tr><td>{ProjectName}.std.tbl</td><td>Standard table values used when creating new projects.</td></tr><tr><td>{ProjectName}.editorsettings</td><td>Initial editor settings for new projects.</td></tr><tr><td>{ProjectName}.pal</td><td>Initial palette settings for new projects.</td></tr><tr><td>{ProjectName}.strings</td><td>Initial settings for in-editor labels.</td></tr><tr><td>{ProjectName}.values</td><td>Initial settings for configurable values used by the editor.</td></tr><tr><td>{ProjectName}.revert.values</td><td>Contains original values for the values file.</td></tr><tr><td>{ProjectName}.revert.zip</td><td><p><div class="accent">Assembly Project only</div><div>Contains original state of the asm folder (see below).</div></p></td></tr><tr><td>{ProjectName}.work.nes</td><td><p>
+                <div class="accent">ROM Project only</div>
+                Created from the template ROM during project creation, this is used for all work;
+                saving, loading, and play testing.
+             </p>
+             <p>
+                <div class="accent">Assembly Project only</div>
+                Created when the assembly is compiled, used for play testing. In Assembly projects,
+                edits are made directly to the data in the asm folder; when compiled, the results are
+                written to this file so it can be used for play testing.
+             </p>
+            </td></tr><tr><td>asm/</td><td><p>
+                <div class="accent">Assembly Project only</div>
+                <div>Contains all disassembly files.</div>
+                <p>
+                    <div>
+                        Of special note is the .asmtype file. For supported assembly source archives,
+                        there will be a file with an .asmtype extension, e.g.
+                    <div>
+                    <ul>
+                    <li>File name is disch-annotated.asmtype</li>
+                    <li>File extension identifies the file as an asmtype declaration</li>
+                    <li>File title is the asmtype name <span class="Accent">disch-annotated</span></li>
+                    <li>The contents are the version number in INI format, e.g.
+                        <code>
+                            <div>[ASMTYPE]<div>
+                            <div>version=1.0.6.0<div>
+                        </code>
+                    </li>
+                    </ul>
+                </p>
+                <p>
+                    <div>
+                        If the file is missing, the source is assumed to be unsupported, in which case
+                        the warnings (and optional enforcement) for Assembly source-to-DLL compatibility
+                        will occur.
+                    </div>
+                    <div>
+                        These warnings can be disabled in App or Project settings
+                    </div>
+                </p>
+            </p>
+            </td></tr></tbody></table></div></section></div><footer class="border-white"><a class="row automargin backtotop" href="setupandstart.html#top">Back to top</a><div class="py-2 mb-0"><div class="row automargin madeby"><h1 class="my-1">FFHacksterEX</h1></div><div class="row automargin"><span class="font-xl"><span class="px-1">v0.9.8.2</span></span></div><div class="row automargin"><span>Site Copyright (C) 2025 Esselle Jaye</span></div><div class="automargin mt-1 mb-0"><ul class="social-footer font-md"><li><a href="mailto:ffhacksterex@gmail.com">Email</a></li><li><a href="https://www.youtube.com/channel/UCXu9vrNQOYzvzebgxkpOckA">YouTube</a></li></ul></div></div><div class="back-black py-2 mb-0"><div class="row automargin ddfnt font-md"><a href="https://digitaldreamers.org/"><h1 class="my-0">DIGITAL DREAMERS</h1></a></div><div class="row automargin"><span class="font-md"><span>Copyright 2025 </span><span>Esselle Jaye</span></span></div></div></footer></body></html>

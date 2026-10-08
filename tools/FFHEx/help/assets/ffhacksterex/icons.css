@@ -1,0 +1,193 @@
+/*
+    Icon sizes
+*/
+
+.img24 {
+    width: 24px;
+    height: 24px;
+}
+
+.img48 {
+    width: 48px;
+    height: 48px;
+}
+
+
+
+/*
+    Table Icon sizes
+    Space the icons and center them
+*/
+
+td.img24 {
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+}
+
+td.img48 {
+    width: 56px;
+    height: 56px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+/*
+    Icons for list items
+*/
+
+ul.iconic li {
+    margin: auto;
+}
+
+ul.iconic li.importsettings {
+    list-style-image: url('ico/iconmonstr-inbox-5-48.png');
+}
+
+ul.iconic li.revert {
+    list-style-image: url('ico/iconmonstr-undo-4-48.png');
+}
+
+ul.iconic li.archive {
+    list-style-image: url('ico/iconmonstr-zip-14-48.png');
+}
+
+ul.iconic li.clone {
+    list-style-image: url('ico/iconmonstr-copy-7-48.png');
+}
+
+ul.iconic li.publish {
+    list-style-image: url('ico/iconmonstr-upload-6-48.png');
+}
+
+ul.iconic li.compile {
+    list-style-image: url('ico/iconmonstr-save-11-48.png');
+}
+
+ul.iconic li.run {
+    list-style-image: url('ico/iconmonstr-gamepad-1-48.png');
+}
+
+ul.iconic li.strings {
+    list-style-image: url('ico/iconmonstr-tag-17-48.png');
+}
+
+ul.iconic li.values {
+    list-style-image: url('ico/iconmonstr-text-21-48.png');
+}
+
+ul.iconic li.ramvalues {
+    list-style-image: url('ico/iconmonstr-ruler-3-48.png');
+}
+
+ul.iconic li.projectsettings {
+    list-style-image: url('ico/iconmonstr-control-panel-4-48.png');
+}
+
+ul.iconic li.editors {
+    list-style-image: url('ico/iconmonstr-edit-5-48.png');
+}
+
+ul.iconic li.appsettings {
+    list-style-image: url('ico/iconmonstr-gear-3-24.png');
+}
+
+ul.iconic li.about {
+    list-style-image: url('ico/iconmonstr-help-1-24.png');
+}
+
+ul.iconic li.helpbook {
+    list-style-image: url('ico/iconmonstr-book-27-24.png');
+}
+
+ul.iconic li.info {
+    list-style-image: url('ico/iconmonstr-info-6-24.png');
+}
+
+
+
+/*
+    Icons for general purposes
+*/
+
+.iconic.importsettings {
+    background-image: url('ico/iconmonstr-inbox-5-48.png');
+}
+
+.iconic.revert {
+    background-image: url('ico/iconmonstr-undo-4-48.png');
+}
+
+.iconic.archive {
+    background-image: url('ico/iconmonstr-zip-14-48.png');
+}
+
+.iconic.clone {
+    background-image: url('ico/iconmonstr-copy-7-48.png');
+}
+
+.iconic.publish {
+    background-image: url('ico/iconmonstr-upload-6-48.png');
+}
+
+.iconic.compile {
+    background-image: url('ico/iconmonstr-save-11-48.png');
+}
+
+.iconic.run {
+    background-image: url('ico/iconmonstr-gamepad-1-48.png');
+}
+
+.iconic.strings {
+    background-image: url('ico/iconmonstr-tag-17-48.png');
+}
+
+.iconic.values {
+    background-image: url('ico/iconmonstr-text-21-48.png');
+}
+
+.iconic.ramvalues {
+    background-image: url('ico/iconmonstr-ruler-3-48.png');
+}
+
+.iconic.projectsettings {
+    background-image: url('ico/iconmonstr-control-panel-4-48.png');
+}
+
+.iconic.editors {
+    background-image: url('ico/iconmonstr-edit-5-48.png');
+}
+
+.iconic.appsettings {
+    background-image: url('ico/iconmonstr-gear-3-24.png');
+}
+
+.iconic.about {
+    background-image: url('ico/iconmonstr-help-1-24.png');
+}
+
+.iconic.helpbook {
+    background-image: url('ico/iconmonstr-book-27-24.png');
+}
+
+.iconic.info {
+    background-image: url('ico/iconmonstr-info-6-24.png');
+}
+
+.iconic.menu {
+    background-image: url('ico/iconmonstr-menu-1-48.png');
+}
+
+
+
+/*z
+    General properties
+*/
+img.thickbordered {
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    padding: 8px;
+}

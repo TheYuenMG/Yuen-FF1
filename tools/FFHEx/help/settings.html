@@ -1,0 +1,93 @@
+<!DOCTYPE html><html><head><link rel="icon" type="image/x-icon" href="assets/ffhacksterex/ico/ffhacksterex.ico"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/ffhacksterex.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/icons.css"><link rel="stylesheet" type="text/css" href="assets/ffhacksterex/images.css"><style>html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 64px 1fr auto;
+}
+
+footer.sticky {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}</style><script>let FIX_FOUC_FOR_FIREFOX;</script></head><body><header class="nav" id="menuMainNav"><a class="home" href="index.html">FFHacksterEx Help</a><span class="nodisplay">&nbsp;</span><div class="menu"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><div class="dropdown"><a><span>Getting Started</span></a><div class="dropdown-submenu"><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><a class="separator my-0"><hr></a><a href="site-index.html">Site Index</a></div></div><div class="dropdown"><a><span>Features</span></a><div class="dropdown-submenu"><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a></div></div></div><a class="about-item right" href="about.html">About</a><div class="ff-thinmenu"><a class="menu row ff-thinmenu">Menu</a><div class="ff-sidenav"><a href="https://ffhacksterex.digitaldreamers.org/">Website</a><a href="license.html">License</a><a href="setupandstart.html">Setup and Start</a><!-- Separators are skipped in the sidenav menu--><a href="site-index.html">Site Index</a><a class="separator my-0"><hr></a><a href="mainwindow.html">Main</a><a href="settings.html">Settings</a><a href="editors.html">Editors</a><a href="subeditors.html">Subeditors</a><a href="extensions.html">Extensions</a><a href="other.html">Other</a><a class="separator my-0"><hr></a><a href="about.html">About</a></div></div></header><div class="page-content"><div class="indexed-page nodisplay">Settings</div><div><h1 class="banner">Settings</h1><hr class="banner"/></div><div class="indexed-section nodisplay">app-settings]=[</div><section id="app-settings"><h1 class="highlight">App Settings</h1><img class="paddedimage scaleslim" src="assets/ffhacksterex/img/app-settings.jpg" width="539" height="437"><div class="digest"><table class="digest"><thead><tr><th>Field</th><th>Detail</th></tr></thead><tbody><tr><td>Prompt before closing</td><td>When checked, pressing escape displays a prompt to confirm closing the app.</td></tr>
+<tr><td>Purge log on startup</td><td>Purge the log file on startup.</td></tr>
+<tr><td>Save hex as UPPERCASE</td><td>In certain editors, hex values will save using uppercase digits.</td></tr>
+<tr><td>Show background art</td><td>If unchecked, turn off the background images.</td></tr><tr><td>Display strikeout checkboxes</td><td><div>In some editors. checkboxes are replaced with strikethrough labels.</div><div>Click the labels to toggle the strikethrough.</div><div>This is a requested experimental feature that was left in and is off by default.</div></td></tr><tr><td>Force new label creation</td><td>Sets the default state of the same checkbox on the project creation windows.</td></tr><tr><td>Always compile before running</td><td>When the Run is clicked, Assembly projects will compile before running.</td></tr><tr><td>Browse with File Dialog</td><td><div>When checked, the File Dialog's folder picker UI is used to selected folders.</div><div>When unchecked, the Shell Browse for Folder dialog is used instead.</div><div>The option is checked by default to use a the File DIalog for folder selection (introduced in WIndows Vista).On XP, this is done via a <a href="folder-browser-hack.html">hack of the file dialog</a>.</div></td></tr><tr class="experimental"><td>Enforce Compatbility</td><td><b>EXPERIMENTAL</b><div>This supersedes the Warn option below and if checked disables that option on the dialog.</div><div>When checked, an attempt to create an assembly project will attempt to verifyif the assembly handling DLL recognizes the format of the Assembly zip being used to create
+the project.</div><div>If that check fails, then project creation fails.</div><div>The check is defined by the assembly handling DLL, not the FFHacksterEx executable.</div></td></tr><tr class="experimental"><td>Warn if loading incompatbile ASM DLL</td><td><b>EXPERIMENTAL</b><div>Similar to the Enforce option above, but instead of blocking project creation ona failed check it displays a modal warning message before continuing.</div></td></tr><tr><td>Folders</td><td><div>Define folder preferences, which are default folders used with
+ various prompts throughout the program.</div><div>The "Use Folder preferences" check box toggles the preferences; if unchecked, then the last directory that was OK'd will be used for the next file or folder prompt.</div><div class="mt-1">See the section below regarding <a href="settings.html#folder-preferences">Folder Preferences</a>.</div></td></tr><tr><td>Executable to run</td><td><div>The run command will attempt to run the specified executable.</div><div>Click Browse to select the executable to run.</div><div class="mt-1">Parameters are specified in the designated edit control.</div><div>If left blank, then the working ROM filepath is passed as the only parameter.</div><div>Otherwise, use %1 to indicate where in the params to pass the working ROM filepath.</div><div class="mt-1">e.g.</div><ul><li><b>C:\TOOLS\FCEUX\2.2.3\fceux.exe</b><div>Invoke FCEUX with the working ROM file passed as the game to load </div></li><li><b>C:\TOOLS\FCEUX\2.2.3\fceux.exe</b> %1<div>Invoke FCEUX with the working ROM file passed as the game to load </div></li><li><b>C:\TOOLS\NES\MESEN\0.9.9\Mesen.exe</b> %1 /VideoScale=2 /DoNotSaveSettings<div>Invoke Mesen with the working ROM file, video scaled by 2x, and don't save the settings specified on this command line to the Mesen config file.</div></li></ul></td></tr><tr><td>Clear MRU Now</td><td>Removes all entries from the right-click MRU for the Welcome Screen's Open Project button.</td></tr><tr><td>Clear Invalid MRU Entries Now</td><td>Removes filepaths that don't exist from the right-click MRU for the Welcome Screen's Open Project button.</td></tr></tbody></table></div><h3 id="folder-preferences">Folder Preferences</h3><p> <div>These folders are used as defaults for the specified types of prompts.</div><div>All of these folder settings are optional; if unspecified, the prompts will  typically use the folder from the most recent prompt dialog.</div></p><img class="paddedimage scaleslim" src="assets/ffhacksterex/img/app-settings-modal-folder-prefs.jpg" width="539" height="437"><div>NOTE: Set a path to the placeholder to the path <span class="accent">*APP</span> to use the application folder.</div><div>This allows copying the application folder to another location without having to adjust the paths stored in settings
+to accommodate the move.</div><div class="digest"><table class="digest"><thead><tr><th>Folder Type</th><th>Detail</th></tr></thead><tbody><tr><td>Additikonal Modules</td><td>If using Extensions, then this is a folder where the application can search to find modules that you want to share between projects.</td></tr><tr><td>Archive</td><td>Used with the Archive command, this is the default folder where  project archives will be stored and searched.</td></tr><tr><td>Asm Dll </td><td>Where to look when prompting for an assembly DLL.<div>When unspecified, the program folder is used.</div></td></tr><tr><td>Clean</td><td>Looks here for clean copies of ROM files and Assembly zips.</td></tr><tr><td>Image Export/Export</td><td>Saves and loads images exported from various dialogs (e.g maps).</td></tr><tr><td>Map Import/Export</td><td>Saves and loads map data files to this directory.</td></tr><tr><td>Project Parent</td><td>The parent directory used for operations that prompt for one.<div>For example, project creation.</div></td></tr><tr><td>Publish</td><td>Folder used with the Publish command.<div>That command copies the working ROM to an output filename in this folder.</div></td></tr></tbody></table></div></section><hr><div class="indexed-section nodisplay">project-settings]=[</div><section id="project-settings"><h1 class="highlight">Project Settings</h1>
+<p>There is a slight difference between ROM and Assembly projects.</p>
+<h4>ROM projects</h4><img class="paddedimage scaledown" src="assets/ffhacksterex/img/project-settings.jpg" width="645" height="343"><div class="digest">
+<table class="digest">
+<tr><th>Field</th><th>Detail</th></tr>
+<tr><td>Select new reversion file</td><td>Pick a new "clean copy" ROM file to use with the Revert command.</td></tr>
+<tr><td>Publish Path</td><td>If specified, the Publish command copies the working ROM (with all of your changes) to this filepath.</td></tr>
+<tr><td>Additional Modules Folder</td><td>If specified, the app will also look here for extensions.</td></tr>
+</table>
+</div>
+<h4>Assembly projects</h4><img class="paddedimage" src="assets/ffhacksterex/img/project-settings-asm.jpg" width="605" height="408"><div class="digest">
+<table class="digest">
+<tr><th>Field</th><th>Detail</th></tr>
+<tr class=""><td>Select new reversion file</td><td>Pick a new "clean copy" assembly ZIP file to use with the Revert command.</td></tr>
+<tr><td>Publish Path</td><td>If specified, the Publish command copies the working ROM (with all of your changes) to this filepath.</td></tr>
+<tr><td>Additional Modules Folder</td><td>If specified, the app will also look here for extensions.</td></tr>
+<tr class="">
+<td>Assembly DLL path</td>
+<td>The assembly DLL used for the project.<br />
+Note that this is available for those implementing new assembly handling DLLs.<br /><span class="bold">If you're just authoring an assembly project, then you can ignore this field.</span>
+</td>
+</tr>
+<tr class="experimental">
+<td>Suppress Assembly-DLL mismatch warning</td>
+<td><div class="accent">EXPERIMENTAL</div><div>When checked, this project will suppress any warning that would otherwise occur 
+when the version of the project assembly source (in the .asmtype file it it exists) 
+doesn't match the version of the Assembly DLL used by the project.</div></td>
+</tr>
+<tr class="experimental">
+<td>Coerce Asm to DLL compatibility</td>
+<td><div class="accent">EXPERIMENTAL</div><div>If the source and DLL are mismatched, then this button will be active.</div><div>In that case, clicking it will backup the existing .asmtype file in 
+the assembly source folder, then update it with the asmtype version 
+of the project's Assembly DLL. That will eliminate future warnings.</div><div class="my-1 accent">Note that this does NOT update or alter the actual assembly source code in any way.</div><div class="mb-1">It just updates the .asmtype file to eliminate the warning.</div><div>You'll have to work out any difficulties or discrepancies by manually 
+comparing the assembly source of the project to that of the version 
+supported by the Assembly DLL.</div><div>The Assembly DLL version can be determined in File Explorer by examining 
+the file's properties (the File Version field on the Details tab).</div><img class="mt-1" src="assets/ffhacksterex/img/asmdll-file-details.jpg" width="359" height="191"></td>
+</tr>
+</table>
+</div></section><hr><div class="indexed-section nodisplay">battle-settings]=[Battle Editor Settings</div><section id="battle-settings"><h1 class="highlight">Battle Editor Settings</h1><img class="paddedimage" src="assets/ffhacksterex/img/battle-settings.jpg" width="181" height="102"><div class="digest"><table class="digest"><tr><th>Field</th><th>Detail</th></tr><tr><td>View Usage</td><td><div>View the places where this battle is used.</div><div>Includes sprite-initiated battles, spiked tile battles,Standard map encounters, and Overworld encounters.</div><div class="mt-1"><span class="accent">Note</span><div> This usage denotes where the battle formation is used, but does not indicate if the battle is effectively used.</div><div>For example, if battle 40 is assigned to Sprite 4F, then Sprite 4F will appear in the View Usage window. However,
+ Sprite 4F might not be used on any maps in the game.</div></div></td></tr></table></div></section><hr><div class="indexed-section nodisplay">class-settings]=[Class Editor Settings</div><section id="class-settings"><h1 class="highlight">Classes Editor Settings</h1><img class="paddedimage" src="assets/ffhacksterex/img/class-settings.jpg" width="516" height="206"><div class="digest">
+<table class="digest">
+<tr><th>Field</th><th>Detail</th></tr>
+<tr>
+<td>Ignore Hold MP settings</td>
+<td>When checked, the code that handles Hold MP is ignored.<br />
+Checked, this means that class indexes 0 and/or 1 can use magic.<br />
+Unchecked: they wont't start with or gain spell charges.<br /><br />
+NOTE: Remember to include these classes in the Classes Editor's Starting MP range
+if you want them to have starting spell changes (not needed if Ignore MP Range
+below is also checked).</td>
+</tr>
+<tr>
+<td>Ignore Post HoldMP settings</td>
+<td>When checked, the Post Hold MP code is ignored.<br />
+Checked: class indexes 6 and/or 7 will use the standard spell charge limit.<br />
+Unchecked: they'll use the Post HoldMP spell charge max in the Classes editor.</td>
+</tr>
+<tr><td>Ignore MP Range</td>
+<td>If checked, then the Classes Editor's Starting MP range dropdowns are disabled, and all classes will start with spell charges.</td></tr>
+<tr>
+<td>Ignore BBMA</td>
+<td>If checked, then BBMA adjustments are not made (damage, hit%, crit rate, absorb, hit count).<br />
+This effectively turns the BB and MA into standard classes like the other 10.<br />
+Note that while the 2x Hits are separate from Class Bonuses in the Classes editor, both respect this option.</td>
+</tr>
+</table>
+</div></section><hr><div class="indexed-section nodisplay">enemy-settings]=[Enemy Editor Settings</div><section id="enemy-settings"><h1 class="highlight">Enemies Editor Settings</h1><img class="paddedimage" src="assets/ffhacksterex/img/enemies-settings.jpg"><div class="digest"><table class="digest"><tr><th>Field</th><th>Detail</th></tr>
+<tr><td>Enemy Byte 15 name</td><td>The text used for the label on the Byte 15 edit group.</td></tr>
+<tr><td>Show as flags</td><td>If checked, the byte is represented by 8 check boxes; else, it's a hexadecimal value (0-FF).</td></tr><tr><td>View Usage</td><td><div>View the places where this enemy is used.</div><div>Includes sprite-initiated battles, spiked tile battles,Standard map encounters, and Overworld encounters.</div><div class="mt-1"><span class="accent">Note</span><div> This usage denotes battles where the enemy appears, but does not indicate if either the battle or enemy is effectively used.</div><div class="mt-1">For example, if enemy 61 is assigned to battle 40 and has a non-zero count, then View Usage will display that battle, even if the battle
+ is never used on the Overworld or any Standard map.</div></div></td></tr></table></div></section><hr><div class="indexed-section nodisplay">magic-settings]=[Magic Editor Settings</div><section id="magic-settings"><h1 class="highlight">Magic Editor Settings</h1><img class="paddedimage" src="assets/ffhacksterex/img/magic-settings.jpg"><div class="digest"><table class="digest"><tr><th>Field</th><th>Detail</th></tr>
+<tr><td>Magic Byte 7 name</td><td>The text used for the label on the Byte 7 text field in the editor.</td></tr></table></div></section><hr><div class="indexed-section nodisplay">sprite-dialogue-settings]=[Sprite Dialogue Editor Settings</div><section id="sprite-dialogue-settings"><h1 class="highlight">Sprite Dialogue Settings</h1><img class="paddedimage" src="assets/ffhacksterex/img/sprite-dialogue-settings.jpg" width="376" height="134"><div class="digest"><table class="digest"><thead><tr><th>Field</th><th>Detail</th></tr></thead><tbody><tr><td>Show actual text</td><td>When checked, shows in-game text; otherwise, shows the LABEL for the text.</td></tr><tr><td>Length</td><td>The maximum length for dialogue text shown in the grid; longer text is truncated to this length.</td></tr><tr><td>Throw if ... invalid handler</td><td><div>When checked, the editor will fail to load if any sprite has an invalid handler or 
+if there are discrepancies between the routines idenfied in the dialogue INI file 
+and the game.</div><div class="mt-1">This option is <span class="accent">unchecked</span> by default.</div></td></tr></tbody></table></div></section><hr><p><div><span class="bold">NOTE:</span> fields in tables with <span class="experimental">this tinted background and italics</span>require a specific assembly ZIP archive for Assembly projects to work properly.
+By default, this is the annotated Disch Assembly.</div></p></div><footer class="border-white"><a class="row automargin backtotop" href="settings.html#top">Back to top</a><div class="py-2 mb-0"><div class="row automargin madeby"><h1 class="my-1">FFHacksterEX</h1></div><div class="row automargin"><span class="font-xl"><span class="px-1">v0.9.8.2</span></span></div><div class="row automargin"><span>Site Copyright (C) 2025 Esselle Jaye</span></div><div class="automargin mt-1 mb-0"><ul class="social-footer font-md"><li><a href="mailto:ffhacksterex@gmail.com">Email</a></li><li><a href="https://www.youtube.com/channel/UCXu9vrNQOYzvzebgxkpOckA">YouTube</a></li></ul></div></div><div class="back-black py-2 mb-0"><div class="row automargin ddfnt font-md"><a href="https://digitaldreamers.org/"><h1 class="my-0">DIGITAL DREAMERS</h1></a></div><div class="row automargin"><span class="font-md"><span>Copyright 2025 </span><span>Esselle Jaye</span></span></div></div></footer></body></html>

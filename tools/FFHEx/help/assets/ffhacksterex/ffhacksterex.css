@@ -1,0 +1,910 @@
+/*TODO: remove these two imports */
+/*
+@import url('ferrum.woff2');
+@import url('ferrum.otf');
+*/
+
+@font-face {
+    font-family: 'ff1';
+    src: url('Ferrum.eot'),
+        url('Ferrum.eot@') format('embedded-opentype'),
+        /*
+        url('Ferrum.woff2') format('woff2'),
+        url('Ferrum.ttf') format('truetype'),
+        url('Ferrum.svg#Ferrum') format('svg'),
+        */
+        url('Ferrum.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'ddfnt';
+    src: url('Oswald-Regular.eot');
+    src: url('Oswald-Regular.eot@') format('embedded-opentype'),
+        url('Oswald-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+:root { 
+    --ffred: darkred;
+    --textcolor: white;
+    --digest-evenrow: #fcf0f0;
+
+    --menuseltext: deeppink;
+    --menuhilite: #fcc;
+
+/*
+    --ffred: darkorange;
+    --textcolor: purple;
+    --digest-evenrow: antiquewhite;
+*/
+
+    --asmcolor: blue;
+    --asmbgcolor: white;
+    --asmfade: rgba(0,0,255,0.1);
+    --dischcolor: green;
+    --dischbgcolor: white;
+    --dischfade: rgba(0,255,0,0.1);
+    --calloutwidth: 3px;
+    --padbase: 1rem;
+
+    --std-fontsize: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.nodisplay {
+    display: none !important;
+}
+.hidden {
+    visibility: hidden !important;
+}
+
+
+
+/*
+    Body styles
+*/
+
+body {
+    font-family: 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+    font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    /*font-size: 100%;*/
+    font-size: var(--std-fontsize);
+    margin: 0;
+}
+
+/* 
+body div.topspacing {
+    visibility: hidden;
+}
+*/
+
+div.page-content {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+
+/* TODO: derive common header and footer styles and insert those as needed.
+    If possible, use pug to create the css file (though I'm not sure that'll work).
+*/
+
+/* Header navbar styles */
+
+header.nav {
+    overflow: hidden;
+    background-color: var(--ffred);
+    border-color: var(--ffred);
+    border-width: 3px;
+    color: var(--textcolor); /*white;*/
+    opacity: 1.0;
+    top: 0;
+    font-family: ff1;
+    font-size: 1.5em;
+    max-height: 4rem;
+}
+
+header.nav a.separator {
+    padding: 0px 20px;
+}
+
+header.nav div.menu {
+    display: inline-block;
+}
+
+header.nav a {
+    display: inline-block;
+    color: var(--textcolor); /*white;*/
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    border: 2px solid var(--ffred);
+}
+
+header.nav a.home {
+    background-color: var(--textcolor); /*white;*/
+    color: var(--ffred);
+}
+
+header.nav a:hover:not(.home):not(.no-focus):not(.separator) {
+    background-color: var(--menuhilite);
+    /*background-color: #fcc; */
+    color: var(--textcolor); /*white;*/
+    text-shadow: 0 0 3px black, 0 0 5px var(--ffred);
+}
+
+/*
+    Dropdown-on-hover menu:
+    When hovering over the div.dropdown menu, the submenu
+    becomes visible. Since the child menu items bubble hover up to
+    the container div, the menu inside the div remains visible
+    as long as the cursor is hovering one of those child menu items.
+*/
+div.dropdown {
+    display: inline-block;
+}
+
+div.dropdown-submenu {
+    display: none;
+    z-index: 9999;
+}
+
+div.dropdown:hover div.dropdown-submenu {
+    display: block;
+    position: absolute;
+}
+
+div.dropdown-submenu a {
+    display: block;
+    background-color: var(--ffred);
+    color: var(--textcolor); /*white;*/
+    z-index: 1;
+}
+
+header.nav a.right {
+    float: right;
+}
+
+
+/*
+    Hamburger menu item
+*/
+header.nav a.ff-hamburger {
+    display: none;
+}
+
+header.nav a.ff-hamburger:hover {
+    background-color: inherit;
+    color: var(--textcolor); /*white;*/
+}
+
+
+/*
+    Dropdown on hover sidenav.
+    This has to be display inline rather than block like .dropdown.
+*/
+header.nav a.ff-thinmenu {
+    display: none;
+}
+
+header.nav a.ff-thinmenu:hover {
+    background-color: inherit;
+    color: var(--textcolor); /*white;*/
+}
+
+header.nav div.sidenav {
+    display: none;
+}
+header.nav div.sidenav a {
+    display: block;
+}
+
+/*
+    Unlike .dropdown, this is only used for the sidenav bar
+*/
+div.ff-thinmenu {
+    display: inline;
+}
+
+div.ff-sidenav {
+    display: none;
+    position: absolute;
+    right: 0;
+}
+
+div.ff-thinmenu:hover div.ff-sidenav
+{
+    display: block;
+}
+
+/* 
+div.ff-thinmenu:hover div.ff-sidenav
+{
+    display: block;
+    position: absolute;
+    right: 0;
+}
+*/
+
+ div.ff-sidenav a {
+    display: block;
+    background-color: var(--ffred);
+    color: var(--textcolor); /*white;*/
+    z-index: 1;
+    text-align: right;
+}
+
+@media only screen and (max-width: 600px) {
+    /* Show the hamgurger menu onits own row */
+    header.nav a.ff-hamburger {
+        display: block;
+        float: right;
+        margin: 12px;
+    }
+    header.nav a.ff-thinmenu {
+        display: block;
+        float: right;
+    }
+    header.nav div.menu {
+        display: none;
+    }
+    /* Hide the right-floating About menu item */
+    header.nav a.about-item{
+        display: none;
+    }
+}
+
+
+
+/*
+    Footer styles
+*/
+
+footer {
+    margin-top: 32px;
+    background-color: var(--ffred);
+    border-color: var(--ffred);
+    border-width: 3px;
+    color: var(--textcolor); /*white;*/
+}
+
+footer *.backtotop {
+    font-family: ff1;
+    font-size: 1.5em;
+    padding-top: 8px;
+}
+
+footer div.content {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 64px;
+    padding-bottom: 96px;
+}
+
+footer a {
+    color: var(--textcolor); /*white;*/
+}
+
+footer span.madeby {
+    font-family: ff1;
+    font-size: 1.5rem;
+}
+
+footer div.madeby {
+    font-family: ff1;
+    font-size: 1.5rem;
+}
+
+footer div.iconrow * {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+footer div.iconlink a {
+    text-decoration: none;
+}
+
+footer div a.textlink {
+    font-family: ff1;
+    font-size: 1.2rem;
+    margin-left: 8px;
+    margin-right: 8px;    
+}
+
+ul.social-footer {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+@media screen and (min-width: 700px) {
+    ul.social-footer {
+        text-align: initial;
+    }
+    ul.social-footer li {
+        display: inline-block;
+    }
+    ul.social-footer > li:not(:last-child):after {
+        content: "|";
+        margin: 0 8px;
+    }
+}
+
+
+
+/*
+    HR styles
+*/
+
+hr {
+    border-top: none;
+    border-bottom: solid 1px silver;
+}
+
+
+
+/*
+    Heading (h*) element styles
+*/
+
+h1.banner {
+    font-family: ff1;
+    font-size: 3.25em;
+    margin-bottom: 0.25rem;
+}
+
+h1.highlight {
+    font-family: ff1;
+    font-size: 2.5em;
+}
+
+
+
+/*
+    Banner styling
+*/
+
+.dlbanner {
+    color: white;
+    background-color: var(--ffred);
+}
+
+.invdlbanner {
+    color: var(--ffred);
+    background-color: white;
+    border: solid 1px var(--ffred);
+}
+
+
+
+/*
+    Alignment and formatting
+*/
+
+/* .center-items > * {
+    vertical-align: middle;
+} */
+
+.inline {
+    display: inline;
+}
+.inlineb {
+    display: inline-block;
+}
+
+
+
+/*
+    Image styles
+*/
+
+svg path.email {
+    stroke: white;
+    fill: white;
+}
+svg path.youtube {
+    stroke: white;
+    fill: white;
+}
+svg path.veoh {
+    stroke: white;
+    fill: white;
+}
+
+img.paddedimage {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    display: block;
+}
+
+img.thinborder {
+    border: solid 1px black;
+}
+
+
+@media screen and (max-width: 960px) {
+    img.paddedimage.scaledown {
+        width: 100%;
+        height: 100%
+    }
+}
+@media screen and (max-width: 560px) {
+    img.paddedimage.scaleslim {
+        width: 100%;
+        height: 100%
+    }
+}
+@media screen and (max-width: 380px) {
+    img.paddedimage.scalethin {
+        width: 100%;
+        height: 100%
+    }
+}
+
+img.border {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+
+
+/*
+    Div styles
+*/
+
+div.digest {
+    overflow-x: auto;
+}
+
+div.fflogosmall {
+    background-image: url('../../notfound.html');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 250px;
+    height: 105px;
+}
+
+div.textlogo {
+    font-family: ff1;
+    font-size: 2em;
+}
+
+div.leftrow {
+    display: flex;
+}
+
+
+
+/*
+    Span and text styles
+*/
+
+.accent {
+    font-weight: bold;
+}
+.italic {
+    font-style: italic;
+}
+.underline {
+    text-decoration: underline;
+}
+.strike {
+    text-decoration: line-through;
+}
+
+.warning, .warn {
+    color: orangered;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+span.experimental {
+    color: darkorange;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+span.experimental {
+    color: var(--dischcolor);
+    background-color: var(--dischfade);
+    border: solid var(--calloutwidth) var(--dischcolor);
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    font-style: italic;
+}
+span.asmnote {
+    color: var(--asmcolor);
+    background-color: var(--asmfade);
+    border: solid var(--calloutwidth) var(--asmcolor);
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+}
+
+span.diatype {
+    font-size: large;
+    font-weight: bold;
+    color: blue;
+}
+span.diaoffset {
+    font-size: large;
+    font-weight: bold;
+    color: green;
+}
+span.diacomment {
+    font-size: large;
+    font-weight: bolder;
+    color: black;
+}
+
+pre.inline {
+    display: inline;
+}
+
+
+/*
+    Table styles
+*/
+
+table.digest {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid var(--ffred); /*darkred;*/
+    min-width: 12px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+table.digest tr:nth-child(even) {
+    background-color: var(--digest-evenrow); /*#fcf0f0;*/
+}
+
+table.digest th {
+    background-color: var(--ffred); /*darkred;*/
+    color: var(--textcolor); /*white;*/
+    border: 1px solid white !important;
+}
+
+table.digest th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid var(--ffred); /*darkred;*/
+}
+
+table.digest tr.experimental {
+    color: var(--dischcolor);
+    background-color: var(--dischfade);
+    box-shadow: inset 0 0 0 var(--calloutwidth) var(--dischcolor);
+    font-style: italic;
+}
+table.digest tr.asmnote {
+    color: var(--asmcolor);
+    background-color: var(--asmfade);
+    box-shadow: inset 0 0 0 var(--calloutwidth) var(--asmcolor);
+}
+
+table.slim-inset {
+    border: none;
+}
+
+table.slim-inset td {
+    border: none;
+}
+
+table.slim-inset tr {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    background-color: white;
+}
+
+table.noborder {
+    border: 0;
+}
+
+table.noborder tr {
+    border: 0;
+}
+
+table.noborder td {
+    border: 0;
+}
+
+td.rowlabel {
+    background-color: var(--ffred); /*darkred;*/
+    color: var(--textcolor); /*white;*/
+    max-width: 7em;
+    border-bottom: 1px solid var(--textcolor); /*white;*/
+}
+
+
+
+/*
+    Misc element styles
+*/
+
+.backtotop {
+    font-family: ff1;
+    font-size: 1.5em;
+}
+
+
+
+/*
+    List styles
+*/
+
+ul.naked {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+
+/*
+    Link styles
+*/
+
+a {
+    color: var(--ffred);
+}
+a:hover {
+    font-weight: bold;
+}
+a:active {
+    color: var(--menuseltext);
+}
+
+a.site-index {
+    text-decoration: none;
+}
+a.site-index:hover,a.site-index:active {
+    color: var(--menuseltext);
+}
+
+h1.dlbanner > a {
+    color: white;
+}
+
+
+
+/*
+    Code styles
+*/
+
+.code {
+    font-family: monospace;
+}
+
+code.tight pre, .code.tight pre {
+    padding: 0;
+    margin: 0;
+}
+
+code *.callout, .code *.callout {
+    font-weight: bold;
+    text-decoration: underline;
+    color: blue;
+}
+
+
+
+/*
+    Text styles
+*/
+
+.bold {
+    font-weight: bold;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+
+/* TODO - replace largertext with oneof the font-* styles at the bottom of the sheet */
+.largertext {
+    font-size: larger;
+}
+
+.automargin {
+    margin: auto;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.pre-wrap {
+    white-space: pre-wrap;
+}
+
+.overflow-wrap {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 1280px;
+}
+/*
+@media screen and (max-width: 700px) {
+    .overflow-wrap {
+        max-width: 300px;
+    }
+}
+*/
+
+/*
+    Column container
+*/
+.row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    /*min-height: 400px;*/
+}
+
+
+/*
+    Floats
+*/
+
+.lfloat {
+    float: left;
+}
+
+.rfloat {
+    float: right;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+/*
+    Spacing
+*/
+
+.m-0 { margin: 0; }
+.m-1 { margin: calc(var(--padbase) * 0.5); }
+.m-2 { margin: calc(var(--padbase) * 1.0); }
+.m-3 { margin: calc(var(--padbase) * 1.75); }
+.m-4 { margin: calc(var(--padbase) * 2.5); }
+.m-5 { margin: calc(var(--padbase) * 3.5); }
+
+.mx-0 { margin-left: 0; margin-right: 0; }
+.mx-1 { margin-left: calc(var(--padbase) * 0.5); margin-right: calc(var(--padbase) * 0.5); }
+.mx-2 { margin-left: calc(var(--padbase) * 1.0); margin-right: calc(var(--padbase) * 1.0); }
+.mx-3 { margin-left: calc(var(--padbase) * 1.75); margin-right: calc(var(--padbase) * 1.75); }
+.mx-4 { margin-left: calc(var(--padbase) * 2.5); margin-right: calc(var(--padbase) * 2.5); }
+.mx-5 { margin-left: calc(var(--padbase) * 3.5); margin-right: calc(var(--padbase) * 3.5); }
+
+.my-0 { margin-top: 0; margin-bottom: 0;  }
+.my-1 { margin-top: calc(var(--padbase) * 0.5); margin-bottom: calc(var(--padbase) * 0.5); }
+.my-2 { margin-top: calc(var(--padbase) * 1.0); margin-bottom: calc(var(--padbase) * 1.0); }
+.my-3 { margin-top: calc(var(--padbase) * 1.75); margin-bottom: calc(var(--padbase) * 1.75); }
+.my-4 { margin-top: calc(var(--padbase) * 2.5); margin-bottom: calc(var(--padbase) * 2.5); }
+.my-5 { margin-top: calc(var(--padbase) * 3.5); margin-bottom: calc(var(--padbase) * 3.5); }
+
+.ml-0 { margin-left: 0; }
+.ml-1 { margin-left: calc(var(--padbase) * 0.5); }
+.ml-2 { margin-left: calc(var(--padbase) * 1.0); }
+.ml-3 { margin-left: calc(var(--padbase) * 1.75); }
+.ml-4 { margin-left: calc(var(--padbase) * 2.5); }
+.ml-5 { margin-left: calc(var(--padbase) * 3.5); }
+
+.mr-0 { margin-right: 0; }
+.mr-1 { margin-right: calc(var(--padbase) * 0.5); }
+.mr-2 { margin-right: calc(var(--padbase) * 1.0); }
+.mr-3 { margin-right: calc(var(--padbase) * 1.75); }
+.mr-4 { margin-right: calc(var(--padbase) * 2.5); }
+.mr-5 { margin-right: calc(var(--padbase) * 3.5); }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: calc(var(--padbase) * 0.5); }
+.mt-2 { margin-top: calc(var(--padbase) * 1.0); }
+.mt-3 { margin-top: calc(var(--padbase) * 1.75); }
+.mt-4 { margin-top: calc(var(--padbase) * 2.5); }
+.mt-5 { margin-top: calc(var(--padbase) * 3.5); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: calc(var(--padbase) * 0.5); }
+.mb-2 { margin-bottom: calc(var(--padbase) * 1.0); }
+.mb-3 { margin-bottom: calc(var(--padbase) * 1.75); }
+.mb-4 { margin-bottom: calc(var(--padbase) * 2.5); }
+.mb-5 { margin-bottom: calc(var(--padbase) * 3.5); }
+
+
+.p-0 { padding: 0; }
+.p-1 { padding: calc(var(--padbase) * 0.5); }
+.p-2 { padding: calc(var(--padbase) * 1.0); }
+.p-3 { padding: calc(var(--padbase) * 1.75); }
+.p-4 { padding: calc(var(--padbase) * 2.5); }
+.p-5 { padding: calc(var(--padbase) * 3.5); }
+
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-1 { padding-left: calc(var(--padbase) * 0.5); padding-right: calc(var(--padbase) * 0.5); }
+.px-2 { padding-left: calc(var(--padbase) * 1.0); padding-right: calc(var(--padbase) * 1.0); }
+.px-3 { padding-left: calc(var(--padbase) * 1.75); padding-right: calc(var(--padbase) * 1.75); }
+.px-4 { padding-left: calc(var(--padbase) * 2.5); padding-right: calc(var(--padbase) * 2.5); }
+.px-5 { padding-left: calc(var(--padbase) * 3.5); padding-right: calc(var(--padbase) * 3.5); }
+
+.py-0 { padding-top: 0; padding-bottom: 0;  }
+.py-1 { padding-top: calc(var(--padbase) * 0.5); padding-bottom: calc(var(--padbase) * 0.5); }
+.py-2 { padding-top: calc(var(--padbase) * 1.0); padding-bottom: calc(var(--padbase) * 1.0); }
+.py-3 { padding-top: calc(var(--padbase) * 1.75); padding-bottom: calc(var(--padbase) * 1.75); }
+.py-4 { padding-top: calc(var(--padbase) * 2.5); padding-bottom: calc(var(--padbase) * 2.5); }
+.py-5 { padding-top: calc(var(--padbase) * 3.5); padding-bottom: calc(var(--padbase) * 3.5); }
+
+.pl-0 { padding-left: 0; }
+.pl-1 { padding-left: calc(var(--padbase) * 0.5); }
+.pl-2 { padding-left: calc(var(--padbase) * 1.0); }
+.pl-3 { padding-left: calc(var(--padbase) * 1.75); }
+.pl-4 { padding-left: calc(var(--padbase) * 2.5); }
+.pl-5 { padding-left: calc(var(--padbase) * 3.5); }
+
+.pr-0 { padding-right: 0; }
+.pr-1 { padding-right: calc(var(--padbase) * 0.5); }
+.pr-2 { padding-right: calc(var(--padbase) * 1.0); }
+.pr-3 { padding-right: calc(var(--padbase) * 1.75); }
+.pr-4 { padding-right: calc(var(--padbase) * 2.5); }
+.pr-5 { padding-right: calc(var(--padbase) * 3.5); }
+
+.pt-0 { padding-top: 0; }
+.pt-1 { padding-top: calc(var(--padbase) * 0.5); }
+.pt-2 { padding-top: calc(var(--padbase) * 1.0); }
+.pt-3 { padding-top: calc(var(--padbase) * 1.75); }
+.pt-4 { padding-top: calc(var(--padbase) * 2.5); }
+.pt-5 { padding-top: calc(var(--padbase) * 3.5); }
+
+.pb-0 { padding-bottom: 0; }
+.pb-1 { padding-bottom: calc(var(--padbase) * 0.5); }
+.pb-2 { padding-bottom: calc(var(--padbase) * 1.0); }
+.pb-3 { padding-bottom: calc(var(--padbase) * 1.75); }
+.pb-4 { padding-bottom: calc(var(--padbase) * 2.5); }
+.pb-5 { padding-bottom: calc(var(--padbase) * 3.5); }
+
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .row {
+        flex-direction: column;
+    }
+}
+
+.back-black {
+    background-color: black;
+}
+
+.border-white {
+    border: solid 1px white;
+}
+
+.ff1 {
+    font-family: 'ff1' !important;
+}
+.ddfnt {
+    font-family: 'ddfnt', sans-serif !important;
+}
+
+.font-lg { font-size: large; }
+.font-lg-2 { font-size: larger; }
+.font-xl { font-size: x-large; }
+.font-xxl { font-size: xx-large; }
+.font-2x { font-size: xx-large; }
+.font-3x { font-size: 3rem; }
+
+/*.local-only { display: none; }*/
+
+/* TODO - move common styles into a common CSS file */
+
